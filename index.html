@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Visualizador interativo de Teoria dos Grafos com BFS, DFS e A*." />
+  <title>GraphLab — Teoria dos Grafos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <span class="eyebrow">Teoria dos Grafos • Projeto Acadêmico</span>
+      <h1>GraphLab</h1>
+      <p>Crie um grafo, conecte os vértices e acompanhe visualmente a execução de BFS, DFS e A*.</p>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel controls-panel">
+      <section>
+        <h2>1. Monte o grafo</h2>
+        <p class="hint">Clique na área ao lado para criar vértices. Depois selecione dois vértices e conecte-os.</p>
+
+        <div class="control-grid">
+          <label>
+            Peso da aresta
+            <input id="edgeWeight" type="number" min="1" value="1" />
+          </label>
+          <button id="connectBtn" class="button secondary">Conectar selecionados</button>
+        </div>
+
+        <div class="button-row">
+          <button id="exampleBtn" class="button ghost">Carregar exemplo</button>
+          <button id="clearBtn" class="button danger ghost">Limpar grafo</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Escolha o algoritmo</h2>
+        <div class="select-grid">
+          <label>
+            Origem
+            <select id="startNode"></select>
+          </label>
+          <label>
+            Destino
+            <select id="targetNode"></select>
+          </label>
+        </div>
+
+        <div class="algorithm-buttons">
+          <button class="button primary" data-algorithm="bfs">Executar BFS</button>
+          <button class="button primary" data-algorithm="dfs">Executar DFS</button>
+          <button class="button primary" data-algorithm="astar">Executar A*</button>
+        </div>
+      </section>
+
+      <section class="algorithm-notes">
+        <h2>Como eles funcionam?</h2>
+        <article>
+          <strong>BFS</strong>
+          <span>Explora o grafo por níveis usando uma fila. Em grafos não ponderados, encontra o caminho com menor número de arestas.</span>
+        </article>
+        <article>
+          <strong>DFS</strong>
+          <span>Segue um caminho em profundidade antes de voltar. É útil para exploração, conectividade e detecção de estruturas.</span>
+        </article>
+        <article>
+          <strong>A*</strong>
+          <span>Combina o custo já percorrido com uma heurística até o destino para priorizar caminhos promissores.</span>
+        </article>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <div class="workspace-toolbar">
+        <div>
+          <strong>Área de visualização</strong>
+          <span id="selectionText">Nenhum vértice selecionado</span>
+        </div>
+        <div class="legend" aria-label="Legenda">
+          <span><i class="dot default"></i>Normal</span>
+          <span><i class="dot frontier"></i>Fronteira</span>
+          <span><i class="dot visited"></i>Visitado</span>
+          <span><i class="dot path"></i>Caminho</span>
+        </div>
+      </div>
+
+      <svg id="graphCanvas" viewBox="0 0 1000 650" role="img" aria-label="Editor visual de grafos"></svg>
+
+      <div class="result-panel">
+        <div>
+          <span class="result-label">Status</span>
+          <strong id="statusText">Crie ou carregue um grafo para começar.</strong>
+        </div>
+        <div>
+          <span class="result-label">Ordem de visita</span>
+          <code id="visitOrder">—</code>
+        </div>
+        <div>
+          <span class="result-label">Caminho encontrado</span>
+          <code id="pathResult">—</code>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projeto de Teoria dos Grafos — visualização de algoritmos de busca.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
