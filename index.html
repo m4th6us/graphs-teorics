@@ -3,111 +3,262 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Visualizador interativo de Teoria dos Grafos com BFS, DFS e A*." />
+  <meta name="description" content="GraphLab: site interativo de Teoria dos Grafos com editor visual e execução passo a passo de BFS, DFS e A*." />
   <title>GraphLab — Teoria dos Grafos</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="hero">
-    <div>
+    <nav class="topbar" aria-label="Navegação principal">
+      <a class="brand" href="#inicio">GraphLab</a>
+      <div class="nav-links">
+        <a href="#conceitos">Conceitos</a>
+        <a href="#algoritmos">Algoritmos</a>
+        <a href="#laboratorio">Laboratório</a>
+      </div>
+    </nav>
+
+    <div id="inicio" class="hero-content">
       <span class="eyebrow">Teoria dos Grafos • Projeto Acadêmico</span>
-      <h1>GraphLab</h1>
-      <p>Crie um grafo, conecte os vértices e acompanhe visualmente a execução de BFS, DFS e A*.</p>
+      <h1>Entenda grafos<br />vendo os algoritmos acontecerem.</h1>
+      <p>
+        Aprenda o que são vértices e arestas, onde grafos aparecem no mundo real e monte sua própria estrutura
+        para acompanhar BFS, DFS e A* passo a passo.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary link-button" href="#laboratorio">Abrir laboratório</a>
+        <a class="button ghost link-button" href="#conceitos">Revisar teoria</a>
+      </div>
+      <div class="hero-stats" aria-label="Resumo do projeto">
+        <div><strong>3</strong><span>algoritmos visuais</span></div>
+        <div><strong>100%</strong><span>executado no navegador</span></div>
+        <div><strong>Interativo</strong><span>crie, edite e mova o grafo</span></div>
+      </div>
     </div>
   </header>
 
-  <main class="layout">
-    <aside class="panel controls-panel">
-      <section>
-        <h2>1. Monte o grafo</h2>
-        <p class="hint">Clique na área ao lado para criar vértices. Depois selecione dois vértices e conecte-os.</p>
+  <main>
+    <section id="conceitos" class="content-section">
+      <div class="section-heading">
+        <span class="eyebrow">Fundamentos</span>
+        <h2>O que é um grafo?</h2>
+        <p>
+          Um grafo é uma estrutura matemática formada por <strong>vértices</strong> (ou nós) e
+          <strong>arestas</strong> (conexões). Ele serve para representar relações entre elementos: pessoas,
+          cidades, computadores, páginas, tarefas e muitos outros sistemas.
+        </p>
+      </div>
 
-        <div class="control-grid">
-          <label>
-            Peso da aresta
-            <input id="edgeWeight" type="number" min="1" value="1" />
-          </label>
-          <button id="connectBtn" class="button secondary">Conectar selecionados</button>
-        </div>
-
-        <div class="button-row">
-          <button id="exampleBtn" class="button ghost">Carregar exemplo</button>
-          <button id="clearBtn" class="button danger ghost">Limpar grafo</button>
-        </div>
-      </section>
-
-      <section>
-        <h2>2. Escolha o algoritmo</h2>
-        <div class="select-grid">
-          <label>
-            Origem
-            <select id="startNode"></select>
-          </label>
-          <label>
-            Destino
-            <select id="targetNode"></select>
-          </label>
-        </div>
-
-        <div class="algorithm-buttons">
-          <button class="button primary" data-algorithm="bfs">Executar BFS</button>
-          <button class="button primary" data-algorithm="dfs">Executar DFS</button>
-          <button class="button primary" data-algorithm="astar">Executar A*</button>
-        </div>
-      </section>
-
-      <section class="algorithm-notes">
-        <h2>Como eles funcionam?</h2>
-        <article>
-          <strong>BFS</strong>
-          <span>Explora o grafo por níveis usando uma fila. Em grafos não ponderados, encontra o caminho com menor número de arestas.</span>
+      <div class="theory-grid">
+        <article class="info-card">
+          <span class="card-kicker">Vértices</span>
+          <h3>Os elementos</h3>
+          <p>Representam as entidades do problema, como cidades em um mapa ou usuários em uma rede social.</p>
         </article>
-        <article>
-          <strong>DFS</strong>
-          <span>Segue um caminho em profundidade antes de voltar. É útil para exploração, conectividade e detecção de estruturas.</span>
+        <article class="info-card">
+          <span class="card-kicker">Arestas</span>
+          <h3>As relações</h3>
+          <p>Ligam os vértices e representam relações como amizade, conexão física, rota ou dependência.</p>
         </article>
-        <article>
-          <strong>A*</strong>
-          <span>Combina o custo já percorrido com uma heurística até o destino para priorizar caminhos promissores.</span>
+        <article class="info-card">
+          <span class="card-kicker">Pesos</span>
+          <h3>O custo da conexão</h3>
+          <p>Uma aresta pode possuir um peso para representar distância, tempo, preço, latência ou outro custo.</p>
         </article>
-      </section>
-    </aside>
+      </div>
 
-    <section class="workspace">
-      <div class="workspace-toolbar">
+      <div class="usage-panel">
         <div>
-          <strong>Área de visualização</strong>
-          <span id="selectionText">Nenhum vértice selecionado</span>
+          <span class="eyebrow">Aplicações</span>
+          <h2>Onde grafos são usados?</h2>
         </div>
-        <div class="legend" aria-label="Legenda">
-          <span><i class="dot default"></i>Normal</span>
-          <span><i class="dot frontier"></i>Fronteira</span>
-          <span><i class="dot visited"></i>Visitado</span>
-          <span><i class="dot path"></i>Caminho</span>
+        <div class="usage-list">
+          <span>Redes sociais e recomendações</span>
+          <span>Mapas, GPS e rotas</span>
+          <span>Internet e redes de computadores</span>
+          <span>Dependências de software e tarefas</span>
+          <span>Logística e cadeias de distribuição</span>
+          <span>Relacionamentos em bancos de dados</span>
         </div>
       </div>
 
-      <svg id="graphCanvas" viewBox="0 0 1000 650" role="img" aria-label="Editor visual de grafos"></svg>
+      <div class="concept-note">
+        <strong>Neste projeto:</strong>
+        <span>
+          trabalhamos com um grafo <strong>não direcionado</strong>, em que cada conexão funciona nos dois sentidos,
+          e <strong>ponderado</strong>, pois cada aresta pode ter um peso positivo.
+        </span>
+      </div>
+    </section>
 
-      <div class="result-panel">
+    <section id="algoritmos" class="content-section algorithms-section">
+      <div class="section-heading">
+        <span class="eyebrow">Busca em grafos</span>
+        <h2>Três estratégias, comportamentos diferentes</h2>
+        <p>Use o mesmo grafo no laboratório para comparar como cada algoritmo decide qual vértice explorar a seguir.</p>
+      </div>
+
+      <div class="algorithm-theory-grid">
+        <article class="algorithm-card">
+          <span class="algorithm-badge">BFS</span>
+          <h3>Busca em Largura</h3>
+          <p>Explora o grafo por níveis, visitando primeiro os vizinhos mais próximos da origem.</p>
+          <div class="formula">Estrutura: <strong>fila (FIFO)</strong></div>
+          <small>Em grafos não ponderados, encontra um caminho com o menor número de arestas.</small>
+        </article>
+
+        <article class="algorithm-card">
+          <span class="algorithm-badge">DFS</span>
+          <h3>Busca em Profundidade</h3>
+          <p>Avança o máximo possível por um caminho antes de voltar e testar alternativas.</p>
+          <div class="formula">Estrutura: <strong>pilha (LIFO)</strong></div>
+          <small>É útil para exploração, conectividade, ciclos e vários problemas de estrutura.</small>
+        </article>
+
+        <article class="algorithm-card featured">
+          <span class="algorithm-badge">A*</span>
+          <h3>Busca informada</h3>
+          <p>Prioriza os vértices que parecem levar ao destino com menor custo total estimado.</p>
+          <div class="formula"><strong>f(n) = g(n) + h(n)</strong></div>
+          <small>No laboratório, g(n) soma os pesos e h(n) usa a distância visual escalada de forma admissível.</small>
+        </article>
+      </div>
+    </section>
+
+    <section id="laboratorio" class="lab-section">
+      <div class="lab-heading">
         <div>
-          <span class="result-label">Status</span>
-          <strong id="statusText">Crie ou carregue um grafo para começar.</strong>
+          <span class="eyebrow">Laboratório interativo</span>
+          <h2>Monte o grafo e execute um algoritmo</h2>
         </div>
-        <div>
-          <span class="result-label">Ordem de visita</span>
-          <code id="visitOrder">—</code>
-        </div>
-        <div>
-          <span class="result-label">Caminho encontrado</span>
-          <code id="pathResult">—</code>
-        </div>
+        <p>Clique no quadro para criar vértices. Arraste um vértice para reposicioná-lo.</p>
+      </div>
+
+      <div class="layout">
+        <aside class="panel controls-panel">
+          <section>
+            <div class="section-title-row">
+              <h2>1. Monte o grafo</h2>
+              <span class="step-chip">Editor</span>
+            </div>
+            <p class="hint">Selecione dois vértices para criar, editar ou remover a aresta entre eles.</p>
+
+            <div class="control-grid">
+              <label>
+                Peso da aresta
+                <input id="edgeWeight" type="number" min="1" step="1" value="1" />
+              </label>
+              <button id="connectBtn" class="button secondary">Conectar</button>
+            </div>
+
+            <div class="button-row compact-actions">
+              <button id="updateWeightBtn" class="button ghost">Atualizar peso</button>
+              <button id="removeEdgeBtn" class="button ghost danger">Remover aresta</button>
+              <button id="removeNodesBtn" class="button ghost danger">Remover vértice(s)</button>
+            </div>
+
+            <div class="button-row">
+              <button id="exampleBtn" class="button ghost">Carregar exemplo</button>
+              <button id="clearBtn" class="button danger ghost">Limpar grafo</button>
+            </div>
+          </section>
+
+          <section>
+            <div class="section-title-row">
+              <h2>2. Escolha o algoritmo</h2>
+              <span class="step-chip">Busca</span>
+            </div>
+
+            <div class="select-grid">
+              <label>
+                Origem
+                <select id="startNode"></select>
+              </label>
+              <label>
+                Destino
+                <select id="targetNode"></select>
+              </label>
+            </div>
+
+            <div class="algorithm-buttons">
+              <button class="button primary" data-algorithm="bfs">Executar BFS</button>
+              <button class="button primary" data-algorithm="dfs">Executar DFS</button>
+              <button class="button primary" data-algorithm="astar">Executar A*</button>
+            </div>
+          </section>
+
+          <section>
+            <div class="section-title-row">
+              <h2>3. Controle a execução</h2>
+              <span class="step-chip">Passo a passo</span>
+            </div>
+
+            <div class="playback-grid">
+              <button id="pauseBtn" class="button secondary" disabled>Pausar</button>
+              <button id="stepBtn" class="button secondary" disabled>Avançar passo</button>
+              <button id="resetVisualizationBtn" class="button ghost" disabled>Reiniciar visual</button>
+            </div>
+
+            <label class="speed-control">
+              Velocidade
+              <select id="speedSelect">
+                <option value="900">Lenta</option>
+                <option value="520" selected>Normal</option>
+                <option value="260">Rápida</option>
+              </select>
+            </label>
+          </section>
+
+          <section class="interaction-help">
+            <h2>Atalhos de uso</h2>
+            <p><strong>Clique vazio:</strong> cria um vértice.</p>
+            <p><strong>Clique no vértice:</strong> seleciona.</p>
+            <p><strong>Arraste:</strong> reposiciona o vértice e recalcula a heurística visual do A*.</p>
+          </section>
+        </aside>
+
+        <section class="workspace" aria-label="Laboratório de grafos">
+          <div class="workspace-toolbar">
+            <div>
+              <strong>Área de visualização</strong>
+              <span id="selectionText">Nenhum vértice selecionado</span>
+            </div>
+            <div class="legend" aria-label="Legenda">
+              <span><i class="dot default"></i>Normal</span>
+              <span><i class="dot frontier"></i>Fronteira</span>
+              <span><i class="dot current"></i>Atual</span>
+              <span><i class="dot visited"></i>Visitado</span>
+              <span><i class="dot path"></i>Caminho</span>
+            </div>
+          </div>
+
+          <svg id="graphCanvas" viewBox="0 0 1000 650" role="img" aria-label="Editor visual de grafos"></svg>
+
+          <div class="result-panel">
+            <div>
+              <span class="result-label">Status</span>
+              <strong id="statusText" aria-live="polite">Exemplo carregado. Escolha origem, destino e um algoritmo.</strong>
+            </div>
+            <div>
+              <span class="result-label">Ordem de visita</span>
+              <code id="visitOrder">—</code>
+            </div>
+            <div>
+              <span class="result-label">Fronteira / estrutura</span>
+              <code id="frontierResult">—</code>
+            </div>
+            <div>
+              <span class="result-label">Caminho encontrado</span>
+              <code id="pathResult">—</code>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>Projeto de Teoria dos Grafos — visualização de algoritmos de busca.</p>
+    <p>GraphLab — Projeto acadêmico de Teoria dos Grafos • HTML, CSS e JavaScript puro.</p>
   </footer>
 
   <script src="script.js"></script>
