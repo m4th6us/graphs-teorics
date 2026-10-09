@@ -1,0 +1,64 @@
+.sorting-explainer {
+  margin: 28px 0 10px;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(23, 29, 43, .86), rgba(12, 17, 27, .9));
+}
+
+.sorting-explainer h3 {
+  margin: 8px 0 10px;
+  font-size: clamp(1.5rem, 3vw, 2.15rem);
+}
+
+.sorting-explainer > p {
+  max-width: 900px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.sorting-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.sorting-card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface-3);
+}
+
+.sorting-card strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.sorting-card span {
+  color: var(--muted);
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+.sorting-note {
+  margin-top: 15px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--warning);
+  border-radius: 10px;
+  background: rgba(242, 189, 78, .07);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.sorting-note strong { color: var(--text); }
+
+@media (max-width: 1000px) {
+  .sorting-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 650px) {
+  .sorting-grid { grid-template-columns: 1fr; }
+}
