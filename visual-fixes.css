@@ -2,6 +2,32 @@
    The old drawings used percentage widths + rotation, which made the lines
    drift away from the nodes as the cards changed size. */
 
+.mini-graph {
+  background-color: #0b1019;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 280'%3E%3Cg stroke='%2359657d' stroke-width='4' stroke-linecap='round'%3E%3Cline x1='95' y1='72' x2='405' y2='78'/%3E%3Cline x1='95' y1='72' x2='270' y2='142'/%3E%3Cline x1='405' y1='78' x2='270' y2='142'/%3E%3Cline x1='270' y1='142' x2='245' y2='228'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-position: center, 0 0, 0 0;
+  background-repeat: no-repeat, repeat, repeat;
+  background-size: 100% 100%, 24px 24px, 24px 24px;
+}
+
+.mini-graph .mini-edge {
+  display: none;
+}
+
+.mini-graph .mini-node {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+}
+
+.mini-graph .friend-a { left: 18.2692%; top: 25.7143%; }
+.mini-graph .friend-b { left: 77.8846%; top: 27.8571%; }
+.mini-graph .friend-d { left: 51.9231%; top: 50.7143%; }
+.mini-graph .friend-c { left: 47.1154%; top: 81.4286%; }
+
 .type-visual {
   background-color: var(--surface-3);
   background-position: center;
