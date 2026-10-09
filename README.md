@@ -2,61 +2,75 @@
 
 Projeto acadêmico em **HTML, CSS e JavaScript puro** para ensinar Teoria dos Grafos de forma visual, interativa e acessível para quem está começando do zero.
 
-A proposta é evitar uma introdução excessivamente técnica: primeiro o site explica grafos com analogias simples e exemplos do cotidiano, depois apresenta os principais conceitos e algoritmos visualmente e, por fim, permite experimentar tudo em um laboratório interativo.
+A experiência foi reorganizada para seguir uma sequência didática simples: primeiro o vocabulário, depois o conceito de grafo, em seguida tipos de grafos, o significado de algoritmo, algoritmos de ordenação e, por fim, os algoritmos específicos usados em grafos.
 
-## O que o site ensina
+## Ordem de aprendizado
 
-### Introdução para iniciantes
+1. **Vocabulário básico** — vértice, aresta, vizinho, caminho, peso e ciclo.
+2. **O que é um grafo** — analogias com amizades, mapas, internet e logística.
+3. **Tipos de grafos** — direcionado, não direcionado e ponderado.
+4. **O que é um algoritmo** — explicado como uma sequência de passos para resolver um problema.
+5. **O que é um algoritmo de ordenação** — conceito geral e exemplos com Bubble, Selection, Insertion, Merge e Quick Sort.
+6. **Algoritmos em grafos** — BFS, DFS, A* e ordenação topológica.
+7. **Laboratório interativo** — criação de grafos e execução passo a passo de BFS, DFS e A*.
 
-- o que é um grafo usando exemplos como amizades, mapas e entregas;
-- diferença entre vértices, arestas e pesos;
-- significado de vizinho, caminho e ciclo;
-- exemplos reais de uso em redes sociais, GPS, internet, dependências e logística;
-- tipos de grafo: direcionado, não direcionado e ponderado.
+## Conteúdo para iniciantes
 
-### Algoritmos apresentados visualmente
+O site evita partir diretamente para termos técnicos. Cada conceito é apresentado com uma definição curta, exemplo cotidiano e contexto visual.
 
-O conteúdo possui animações próprias em CSS que funcionam como pequenos GIFs explicativos.
+- vértices como pessoas, cidades ou tarefas;
+- arestas como amizades, estradas ou dependências;
+- pesos como distância, tempo, preço ou custo;
+- caminhos como sequências de conexões;
+- ciclos como caminhos que retornam ao ponto inicial.
 
-- **BFS (Breadth-First Search)** — busca em largura, explorando o grafo por níveis;
-- **DFS (Depth-First Search)** — busca em profundidade, avançando por um caminho antes de retornar;
-- **A\*** — busca informada que considera o custo percorrido `g(n)` e uma estimativa `h(n)` até o destino;
-- **Ordenação topológica** — apresentada conceitualmente como exemplo de ordenação baseada em dependências em grafos direcionados acíclicos.
+## Algoritmos de ordenação
 
-O site também diferencia algoritmos de **busca/percurso** de um algoritmo de **ordenação topológica**, evitando tratar BFS, DFS e A* incorretamente como algoritmos de ordenação.
+O projeto agora explica primeiro o conceito geral de ordenação: receber elementos fora de ordem e reorganizá-los segundo um critério.
+
+São apresentados visualmente:
+
+- **Bubble Sort** — compara elementos vizinhos;
+- **Selection Sort** — seleciona o próximo menor elemento;
+- **Insertion Sort** — insere cada item na posição correta;
+- **Merge Sort** — divide, ordena partes menores e combina;
+- **Quick Sort** — utiliza um pivô para separar os elementos.
+
+Esses algoritmos são apresentados como contexto. Eles não devem ser confundidos com BFS, DFS ou A*, que são algoritmos de busca/percurso em grafos.
+
+## Algoritmos de grafos apresentados
+
+- **BFS (Breadth-First Search)** — busca em largura, explorando por níveis;
+- **DFS (Depth-First Search)** — busca em profundidade, seguindo um caminho antes de retornar;
+- **A\*** — busca informada que combina custo percorrido `g(n)` e estimativa `h(n)`;
+- **Ordenação topológica** — cria uma ordem válida respeitando dependências em um grafo direcionado sem ciclos.
+
+As demonstrações usam uma geometria padronizada para que os mesmos nós e conexões permaneçam alinhados em todos os cards, facilitando a comparação visual entre os algoritmos.
 
 ## Laboratório interativo
 
-O laboratório continua permitindo experimentar BFS, DFS e A* em um grafo criado pelo próprio usuário.
+O laboratório permite:
 
-- criação de vértices clicando no quadro;
-- movimentação de vértices por arrastar e soltar;
-- seleção de até dois vértices;
-- criação de arestas não direcionadas;
-- definição e alteração do peso das arestas;
-- remoção de arestas e vértices;
-- grafo de exemplo carregado inicialmente;
-- escolha de vértice de origem e destino;
-- execução visual de BFS, DFS e A*;
-- destaque do vértice atual, fronteira, visitados e caminho final;
-- exibição da ordem de visita;
-- exibição da fila, pilha ou conjunto aberto durante a execução;
-- exibição de `f(n)` na fronteira do A*;
-- cálculo do custo total do caminho no A*;
-- controles para pausar, continuar, avançar um passo e reiniciar a visualização;
-- três velocidades de animação.
+- criar vértices clicando no quadro;
+- mover vértices por arrastar e soltar;
+- conectar dois vértices;
+- adicionar ou alterar pesos;
+- remover arestas e vértices;
+- escolher origem e destino;
+- executar BFS, DFS e A*;
+- acompanhar fronteira, visitados, vértice atual e caminho encontrado;
+- pausar, avançar passo a passo e reiniciar a visualização;
+- alterar a velocidade da animação.
 
 ## A* no laboratório
 
-No A*, a heurística usa a distância euclidiana entre os vértices, multiplicada pelo menor quociente `peso/distância` das arestas existentes. Isso mantém a heurística compatível com os pesos positivos utilizados no laboratório.
+A heurística utiliza a distância euclidiana entre os vértices, multiplicada pelo menor quociente `peso/distância` das arestas existentes. Isso mantém a estimativa compatível com os pesos positivos usados no laboratório.
 
 ## Como executar
 
 Não é necessário instalar dependências.
 
-Abra o arquivo `index.html` diretamente no navegador ou execute um servidor HTTP estático.
-
-Exemplo com Python:
+Abra `index.html` diretamente no navegador ou execute um servidor HTTP estático:
 
 ```bash
 python -m http.server 8000
@@ -71,14 +85,24 @@ Depois acesse `http://localhost:8000`.
 ├── index.html
 ├── styles.css
 ├── learning.css
+├── vocabulary.css
+├── algorithm-basics.css
+├── sorting.css
+├── sorting-visuals.css
+├── algorithm-demos.css
 ├── script.js
 └── README.md
 ```
 
-- `styles.css`: estilos originais da interface e do laboratório;
-- `learning.css`: componentes educativos, diagramas e animações visuais;
-- `script.js`: editor do grafo e execução dos algoritmos do laboratório.
+- `styles.css`: interface principal e laboratório;
+- `learning.css`: componentes educativos já existentes;
+- `vocabulary.css`: seção inicial de vocabulário;
+- `algorithm-basics.css`: introdução ao conceito de algoritmo;
+- `sorting.css`: cards e explicações dos algoritmos de ordenação;
+- `sorting-visuals.css`: elementos visuais dos exemplos de ordenação;
+- `algorithm-demos.css`: geometria padronizada e alinhamento das animações de grafos;
+- `script.js`: editor do grafo e execução dos algoritmos interativos.
 
 ## Objetivo acadêmico
 
-O GraphLab busca tornar Teoria dos Grafos compreensível mesmo para alguém sem familiaridade com o assunto. Em vez de começar por fórmulas ou definições formais, a interface parte de situações conhecidas, transforma essas situações em grafos e só então apresenta os algoritmos e estruturas utilizados para percorrê-los.
+O GraphLab busca tornar Teoria dos Grafos compreensível para alguém sem familiaridade com o tema. A interface constrói primeiro o vocabulário necessário, associa conceitos a situações conhecidas e só depois apresenta algoritmos e estruturas mais técnicas.
