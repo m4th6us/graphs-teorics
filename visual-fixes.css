@@ -1,0 +1,66 @@
+/* Geometry fixes for the educational graph drawings.
+   The old drawings used percentage widths + rotation, which made the lines
+   drift away from the nodes as the cards changed size. */
+
+.type-visual {
+  background-color: var(--surface-3);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.type-visual > * {
+  display: none;
+}
+
+.graph-type-card:nth-child(1) .type-visual {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 120'%3E%3Cg stroke='%23667085' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='90' y1='68' x2='210' y2='35'/%3E%3Cline x1='210' y1='35' x2='330' y2='83'/%3E%3C/g%3E%3Cg fill='%2320283a' stroke='%23a695ff' stroke-width='3'%3E%3Ccircle cx='90' cy='68' r='15'/%3E%3Ccircle cx='210' cy='35' r='15'/%3E%3Ccircle cx='330' cy='83' r='15'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.graph-type-card:nth-child(2) .type-visual {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 120'%3E%3Cdefs%3E%3Cmarker id='a' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'%3E%3Cpath d='M0,0 L8,4 L0,8 Z' fill='%23667085'/%3E%3C/marker%3E%3C/defs%3E%3Cg stroke='%23667085' stroke-width='3' stroke-linecap='round' marker-end='url(%23a)'%3E%3Cline x1='106' y1='64' x2='191' y2='40'/%3E%3Cline x1='225' y1='42' x2='314' y2='77'/%3E%3C/g%3E%3Cg fill='%2320283a' stroke='%23a695ff' stroke-width='3'%3E%3Ccircle cx='90' cy='68' r='15'/%3E%3Ccircle cx='210' cy='35' r='15'/%3E%3Ccircle cx='330' cy='83' r='15'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.graph-type-card:nth-child(3) .type-visual {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 120'%3E%3Cg stroke='%23667085' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='90' y1='68' x2='210' y2='35'/%3E%3Cline x1='210' y1='35' x2='330' y2='83'/%3E%3C/g%3E%3Cg fill='%2320283a' stroke='%23a695ff' stroke-width='3'%3E%3Ccircle cx='90' cy='68' r='15'/%3E%3Ccircle cx='210' cy='35' r='15'/%3E%3Ccircle cx='330' cy='83' r='15'/%3E%3C/g%3E%3Cg font-family='Arial,sans-serif' font-size='13' font-weight='700' fill='%23f2bd4e'%3E%3Crect x='142' y='39' width='24' height='19' rx='7' fill='%230b1019'/%3E%3Ctext x='154' y='53' text-anchor='middle'%3E4%3C/text%3E%3Crect x='263' y='49' width='24' height='19' rx='7' fill='%230b1019'/%3E%3Ctext x='275' y='63' text-anchor='middle'%3E7%3C/text%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Same idea for BFS / DFS / A*: one SVG owns the edges, while the HTML
+   circles stay on top so their visit animations still work. */
+.algorithm-demo .demo-stage {
+  position: relative;
+  width: min(100%, 620px);
+  height: 100%;
+  margin: 0 auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 620 220'%3E%3Cg stroke='%234f5b71' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='82' y1='110' x2='205' y2='55'/%3E%3Cline x1='82' y1='110' x2='205' y2='165'/%3E%3Cline x1='205' y1='55' x2='405' y2='55'/%3E%3Cline x1='205' y1='165' x2='405' y2='165'/%3E%3Cline x1='405' y1='55' x2='538' y2='110'/%3E%3Cline x1='405' y1='165' x2='538' y2='110'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.algorithm-demo .demo-line {
+  display: none;
+}
+
+.algorithm-demo .demo-node {
+  width: 42px;
+  height: 42px;
+  margin: -21px 0 0 -21px;
+}
+
+.algorithm-demo .demo-node.n1 { left: 13.2258%; top: 50%; }
+.algorithm-demo .demo-node.n2 { left: 33.0645%; top: 25%; }
+.algorithm-demo .demo-node.n3 { left: 33.0645%; top: 75%; }
+.algorithm-demo .demo-node.n4 { left: 65.3226%; top: 25%; }
+.algorithm-demo .demo-node.n5 { left: 65.3226%; top: 75%; }
+.algorithm-demo .demo-node.n6 { left: 86.7742%; top: 50%; }
+
+.demo-topological .demo-stage {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 620 220'%3E%3Cdefs%3E%3Cmarker id='a' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'%3E%3Cpath d='M0,0 L8,4 L0,8 Z' fill='%234f5b71'/%3E%3C/marker%3E%3C/defs%3E%3Cg stroke='%234f5b71' stroke-width='3' stroke-linecap='round' marker-end='url(%23a)'%3E%3Cline x1='101' y1='102' x2='183' y2='65'/%3E%3Cline x1='101' y1='118' x2='183' y2='155'/%3E%3Cline x1='226' y1='55' x2='383' y2='55'/%3E%3Cline x1='226' y1='165' x2='383' y2='165'/%3E%3Cline x1='426' y1='64' x2='516' y2='101'/%3E%3Cline x1='426' y1='156' x2='516' y2='119'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+@media (max-width: 650px) {
+  .algorithm-demo .demo-stage {
+    width: 100%;
+  }
+}
