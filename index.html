@@ -3,17 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GraphLab: introdução visual e interativa à Teoria dos Grafos para iniciantes, com exemplos, animações e laboratório de BFS, DFS e A*." />
+  <meta name="description" content="GraphLab: introdução visual e interativa à Teoria dos Grafos para iniciantes, com vocabulário, algoritmos, ordenação e laboratório de BFS, DFS e A*." />
   <title>GraphLab — Teoria dos Grafos</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="vocabulary.css" />
+  <link rel="stylesheet" href="algorithm-basics.css" />
+  <link rel="stylesheet" href="sorting.css" />
+  <link rel="stylesheet" href="sorting-visuals.css" />
+  <link rel="stylesheet" href="algorithm-demos.css" />
 </head>
 <body>
   <header class="hero">
     <nav class="topbar" aria-label="Navegação principal">
       <a class="brand" href="#inicio">GraphLab</a>
       <div class="nav-links">
-        <a href="#conceitos">O que são grafos?</a>
+        <a href="#vocabulario">Vocabulário</a>
+        <a href="#conceitos">Grafos</a>
         <a href="#tipos">Tipos</a>
         <a href="#algoritmos">Algoritmos</a>
         <a href="#laboratorio">Laboratório</a>
@@ -24,29 +30,50 @@
       <span class="eyebrow">Teoria dos Grafos • Do zero</span>
       <h1>Grafos sem complicação.</h1>
       <p>
-        Imagine pessoas ligadas por amizades, cidades conectadas por estradas ou páginas conectadas por links.
-        Isso já é a ideia de um grafo. Aqui você aprende visualmente, sem precisar conhecer matemática avançada.
+        Antes de falar de BFS, DFS ou A*, vamos construir o vocabulário básico e entender a ideia de algoritmo.
+        A proposta é explicar tudo como para alguém vendo grafos pela primeira vez.
       </p>
       <div class="hero-actions">
-        <a class="button primary link-button" href="#conceitos">Começar do zero</a>
+        <a class="button primary link-button" href="#vocabulario">Começar pelo vocabulário</a>
         <a class="button ghost link-button" href="#laboratorio">Ir para o laboratório</a>
       </div>
       <div class="hero-stats" aria-label="Resumo do projeto">
-        <div><strong>Visual</strong><span>conceitos explicados com desenhos</span></div>
-        <div><strong>Passo a passo</strong><span>algoritmos animados e comentados</span></div>
+        <div><strong>Do zero</strong><span>sem exigir conhecimento prévio</span></div>
+        <div><strong>Visual</strong><span>desenhos, animações e comparações</span></div>
         <div><strong>Interativo</strong><span>crie e teste seu próprio grafo</span></div>
       </div>
     </div>
   </header>
 
   <main>
+    <section id="vocabulario" class="content-section vocabulary-section">
+      <div class="section-heading vocabulary-lead">
+        <span class="eyebrow">Primeiro: fale a língua dos grafos</span>
+        <h2>Vocabulário básico</h2>
+        <p>
+          Antes de qualquer algoritmo, existem algumas palavras que aparecem o tempo todo. Entender essas palavras torna o restante da página muito mais simples.
+        </p>
+      </div>
+
+      <div class="vocabulary-grid">
+        <article class="vocabulary-card"><span class="vocabulary-number">1</span><h3>Vértice ou nó</h3><p>É uma das “coisas” do grafo: uma pessoa, cidade, página, tarefa ou computador.</p><span class="vocabulary-example">Exemplo: São Paulo pode ser um vértice em um mapa.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">2</span><h3>Aresta</h3><p>É a ligação entre dois vértices. Ela mostra que existe algum tipo de relação entre eles.</p><span class="vocabulary-example">Exemplo: uma estrada ligando duas cidades.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">3</span><h3>Vizinho</h3><p>É um vértice conectado diretamente a outro, sem precisar passar por um terceiro ponto.</p><span class="vocabulary-example">Se A está ligado a B, então B é vizinho de A.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">4</span><h3>Caminho</h3><p>É uma sequência de vértices conectados que permite sair de um ponto e chegar a outro.</p><span class="vocabulary-example">A → B → C → D é um caminho de A até D.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">5</span><h3>Peso</h3><p>É um número associado a uma aresta. Pode representar distância, preço, tempo ou dificuldade.</p><span class="vocabulary-example">Uma estrada pode ter peso 120 para representar 120 km.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">6</span><h3>Ciclo</h3><p>Acontece quando um caminho consegue voltar ao ponto em que começou.</p><span class="vocabulary-example">A → B → C → A forma um ciclo.</span></article>
+      </div>
+
+      <div class="vocabulary-tip"><strong>Regra mental rápida:</strong> vértices são as coisas, arestas são as ligações, caminhos são sequências de ligações e pesos dizem quanto uma ligação “custa”.</div>
+    </section>
+
     <section id="conceitos" class="content-section">
       <div class="section-heading">
-        <span class="eyebrow">Começando do começo</span>
+        <span class="eyebrow">Agora a ideia principal</span>
         <h2>Afinal, o que é um grafo?</h2>
         <p>
-          Um grafo é uma forma de desenhar <strong>coisas</strong> e as <strong>ligações entre elas</strong>.
-          As coisas são chamadas de <strong>vértices</strong> (ou nós) e as ligações são chamadas de <strong>arestas</strong>.
+          Um grafo é uma forma de representar <strong>coisas</strong> e as <strong>ligações entre elas</strong>.
+          Em vez de guardar apenas uma lista de objetos, ele ajuda a responder perguntas sobre quem está conectado, como chegar de um ponto a outro e qual caminho pode ser melhor.
         </p>
       </div>
 
@@ -54,79 +81,37 @@
         <article class="beginner-copy">
           <span class="card-kicker">Pense assim</span>
           <h3>Uma rede social é um grafo.</h3>
-          <p>
-            Cada pessoa pode ser representada por uma bolinha. Quando duas pessoas são amigas, desenhamos uma linha entre elas.
-            Pronto: temos um grafo.
-          </p>
+          <p>Cada pessoa pode ser uma bolinha. Quando duas pessoas são amigas, desenhamos uma linha entre elas. Pronto: já temos um grafo.</p>
           <div class="simple-rule">
-            <span><strong>Bolinha = vértice.</strong> É algo que queremos representar.</span>
-            <span><strong>Linha = aresta.</strong> É uma relação ou caminho entre dois vértices.</span>
-            <span><strong>Número na linha = peso.</strong> Pode representar distância, custo, tempo ou dificuldade.</span>
+            <span><strong>Bolinha = vértice.</strong> Algo que queremos representar.</span>
+            <span><strong>Linha = aresta.</strong> Uma relação ou caminho entre dois vértices.</span>
+            <span><strong>Número na linha = peso.</strong> Distância, custo, tempo ou dificuldade.</span>
           </div>
         </article>
 
         <article class="visual-example">
-          <div class="visual-title">
-            <strong>Exemplo: quatro pessoas</strong>
-            <span>As linhas representam amizades</span>
-          </div>
+          <div class="visual-title"><strong>Exemplo: quatro pessoas</strong><span>As linhas representam amizades</span></div>
           <div class="mini-graph" aria-label="Exemplo visual de um grafo de amizades">
-            <span class="mini-edge edge-ab"></span>
-            <span class="mini-edge edge-ad"></span>
-            <span class="mini-edge edge-bd"></span>
-            <span class="mini-edge edge-cd"></span>
-            <span class="mini-node friend-a">Ana</span>
-            <span class="mini-node friend-b">Bia</span>
-            <span class="mini-node friend-c">Caio</span>
-            <span class="mini-node friend-d">Davi</span>
+            <span class="mini-edge edge-ab"></span><span class="mini-edge edge-ad"></span><span class="mini-edge edge-bd"></span><span class="mini-edge edge-cd"></span>
+            <span class="mini-node friend-a">Ana</span><span class="mini-node friend-b">Bia</span><span class="mini-node friend-c">Caio</span><span class="mini-node friend-d">Davi</span>
           </div>
-          <p>
-            Ana conhece Bia e Davi. Caio conhece Davi. O desenho permite enxergar rapidamente quem está conectado a quem.
-          </p>
+          <p>Ana conhece Bia e Davi. Caio conhece Davi. O desenho permite enxergar rapidamente quem está conectado a quem.</p>
         </article>
       </div>
 
       <div class="analogy-strip">
-        <article class="analogy-item">
-          <strong>🗺️ Mapa</strong>
-          <span>Cidades são vértices e estradas são arestas. A distância pode ser o peso.</span>
-        </article>
-        <article class="analogy-item">
-          <strong>🌐 Internet</strong>
-          <span>Computadores e roteadores são vértices; conexões de rede são arestas.</span>
-        </article>
-        <article class="analogy-item">
-          <strong>📦 Entregas</strong>
-          <span>Locais são vértices, rotas são arestas e o tempo de viagem pode ser o peso.</span>
-        </article>
+        <article class="analogy-item"><strong>🗺️ Mapa</strong><span>Cidades são vértices, estradas são arestas e a distância pode ser o peso.</span></article>
+        <article class="analogy-item"><strong>🌐 Internet</strong><span>Computadores e roteadores são vértices; conexões de rede são arestas.</span></article>
+        <article class="analogy-item"><strong>📦 Entregas</strong><span>Locais são vértices, rotas são arestas e o tempo de viagem pode ser o peso.</span></article>
       </div>
 
-      <div class="section-divider-title">
-        <span class="eyebrow">Vocabulário básico</span>
-        <h3>As palavras que você mais vai encontrar</h3>
-        <p>Não precisa decorar tudo de uma vez. Use esta seção como uma cola rápida.</p>
-      </div>
-
-      <div class="glossary-grid">
-        <article class="glossary-card"><strong>Vértice / nó</strong><p>Um elemento do grafo: pessoa, cidade, página, tarefa, computador etc.</p></article>
-        <article class="glossary-card"><strong>Aresta</strong><p>A ligação entre dois vértices. Pode representar amizade, estrada, conexão ou dependência.</p></article>
-        <article class="glossary-card"><strong>Vizinho</strong><p>Um vértice conectado diretamente a outro por uma aresta.</p></article>
-        <article class="glossary-card"><strong>Caminho</strong><p>Uma sequência de vértices ligados que permite sair de um ponto e chegar a outro.</p></article>
-        <article class="glossary-card"><strong>Peso</strong><p>Um valor associado a uma aresta, como quilômetros, preço, tempo ou custo.</p></article>
-        <article class="glossary-card"><strong>Ciclo</strong><p>Um caminho que consegue voltar ao ponto de partida.</p></article>
-      </div>
-
-      <div class="section-divider-title">
-        <span class="eyebrow">No mundo real</span>
-        <h3>Grafos aparecem em muitos lugares</h3>
-      </div>
-
+      <div class="section-divider-title"><span class="eyebrow">No mundo real</span><h3>Grafos aparecem em muitos lugares</h3></div>
       <div class="real-examples-grid">
-        <article class="real-example-card"><span class="example-icon">👥</span><h3>Redes sociais</h3><p>Usuários são vértices. Amizades, seguidores ou mensagens podem ser as arestas.</p></article>
-        <article class="real-example-card"><span class="example-icon">🚗</span><h3>GPS e rotas</h3><p>Cruzamentos ou cidades viram vértices. Ruas e estradas viram arestas com distância ou tempo.</p></article>
+        <article class="real-example-card"><span class="example-icon">👥</span><h3>Redes sociais</h3><p>Usuários são vértices. Amizades, seguidores ou mensagens podem ser arestas.</p></article>
+        <article class="real-example-card"><span class="example-icon">🚗</span><h3>GPS e rotas</h3><p>Cruzamentos ou cidades viram vértices. Ruas e estradas viram arestas.</p></article>
         <article class="real-example-card"><span class="example-icon">🔗</span><h3>Sites e buscas</h3><p>Páginas são vértices e links são arestas. Motores de busca analisam essas conexões.</p></article>
         <article class="real-example-card"><span class="example-icon">💻</span><h3>Redes de computadores</h3><p>Máquinas e roteadores são pontos ligados por conexões físicas ou lógicas.</p></article>
-        <article class="real-example-card"><span class="example-icon">🧩</span><h3>Dependências</h3><p>Uma tarefa ou pacote pode depender de outro. O grafo mostra a ordem necessária.</p></article>
+        <article class="real-example-card"><span class="example-icon">🧩</span><h3>Dependências</h3><p>Uma tarefa ou pacote pode depender de outro. O grafo deixa a relação visível.</p></article>
         <article class="real-example-card"><span class="example-icon">📦</span><h3>Logística</h3><p>Centros de distribuição, clientes e rotas formam redes que podem ser otimizadas.</p></article>
       </div>
     </section>
@@ -137,218 +122,92 @@
         <h2>Tipos de grafos em linguagem simples</h2>
         <p>A diferença está principalmente no sentido das ligações e na existência ou não de pesos.</p>
       </div>
-
       <div class="graph-types-grid">
-        <article class="graph-type-card">
-          <div class="type-visual" aria-hidden="true">
-            <span class="type-line one"></span><span class="type-line two"></span>
-            <span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span>
-          </div>
-          <span class="card-kicker">Não direcionado</span>
-          <h3>A ligação vale nos dois sentidos</h3>
-          <p>Se A está ligado a B, B também está ligado a A. Uma amizade é um bom exemplo.</p>
-        </article>
-
-        <article class="graph-type-card">
-          <div class="type-visual" aria-hidden="true">
-            <span class="type-line one type-arrow"></span><span class="type-line two type-arrow"></span>
-            <span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span>
-          </div>
-          <span class="card-kicker">Direcionado</span>
-          <h3>A ligação tem direção</h3>
-          <p>Uma seta A → B não significa que B → A também exista. “Seguir” alguém é um exemplo.</p>
-        </article>
-
-        <article class="graph-type-card">
-          <div class="type-visual" aria-hidden="true">
-            <span class="type-line one weighted"></span><span class="type-line two weighted"></span>
-            <span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span>
-          </div>
-          <span class="card-kicker">Ponderado</span>
-          <h3>As ligações possuem valores</h3>
-          <p>O número pode ser distância, preço ou tempo. Dois caminhos podem existir, mas um ser mais barato.</p>
-        </article>
+        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one"></span><span class="type-line two"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Não direcionado</span><h3>A ligação vale nos dois sentidos</h3><p>Se A está ligado a B, B também está ligado a A. Uma amizade é um bom exemplo.</p></article>
+        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one type-arrow"></span><span class="type-line two type-arrow"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Direcionado</span><h3>A ligação tem direção</h3><p>Uma seta A → B não significa que B → A também exista. “Seguir” alguém é um exemplo.</p></article>
+        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one weighted"></span><span class="type-line two weighted"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Ponderado</span><h3>As ligações possuem valores</h3><p>O número pode ser distância, preço ou tempo. Dois caminhos podem existir, mas um ser mais barato.</p></article>
       </div>
-
-      <div class="beginner-tip">
-        <strong>Neste laboratório:</strong> usamos um grafo <strong>não direcionado e ponderado</strong>.
-        Isso significa que cada conexão pode ser usada nos dois sentidos e possui um peso positivo.
-      </div>
+      <div class="beginner-tip"><strong>Neste laboratório:</strong> usamos um grafo <strong>não direcionado e ponderado</strong>. Cada conexão pode ser usada nos dois sentidos e possui um peso positivo.</div>
     </section>
 
     <section id="algoritmos" class="content-section algorithms-section">
       <div class="section-heading">
-        <span class="eyebrow">Como o computador percorre um grafo?</span>
-        <h2>Algoritmos vistos como uma caminhada</h2>
-        <p>
-          Um algoritmo define a regra usada para escolher qual vértice visitar em seguida. As animações abaixo repetem o percurso automaticamente, como pequenos GIFs.
-        </p>
+        <span class="eyebrow">Antes dos nomes complicados</span>
+        <h2>O que é um algoritmo?</h2>
+        <p>Um algoritmo é uma sequência clara de passos usada para resolver um problema. Pense em uma receita: existe uma entrada, uma ordem de ações e um resultado esperado.</p>
       </div>
+
+      <div class="algorithm-foundation-grid">
+        <article class="algorithm-foundation-card">
+          <span class="card-kicker">Exemplo cotidiano</span><h3>Fazer café também pode ser um algoritmo</h3><p>O computador precisa de instruções bem mais exatas que uma pessoa, mas a lógica é parecida.</p>
+          <div class="recipe-steps"><div class="recipe-step"><b>1</b><span>Colocar água.</span></div><div class="recipe-step"><b>2</b><span>Aquecer a água.</span></div><div class="recipe-step"><b>3</b><span>Passar pelo café.</span></div><div class="recipe-step"><b>4</b><span>Servir o resultado.</span></div></div>
+        </article>
+        <article class="algorithm-foundation-card">
+          <span class="card-kicker">No computador</span><h3>A regra decide o próximo passo</h3><p>Em um grafo, diferentes algoritmos podem receber os mesmos vértices e arestas, mas escolher uma ordem diferente para explorar as conexões.</p>
+          <div class="algorithm-definition"><strong>Entrada:</strong> o grafo e, dependendo do problema, um ponto inicial e um destino.<br /><strong>Processamento:</strong> uma regra decide o que visitar em seguida.<br /><strong>Saída:</strong> uma ordem de visita, um caminho, um custo ou outra resposta.</div>
+        </article>
+      </div>
+
+      <div class="sorting-explainer">
+        <span class="eyebrow">E o que é ordenação?</span>
+        <h3>Algoritmo de ordenação coloca elementos em uma ordem definida</h3>
+        <p>Se temos os números 8, 2, 5 e 1, um algoritmo de ordenação pode reorganizá-los para 1, 2, 5 e 8. Existem várias estratégias para chegar ao mesmo resultado, com comportamentos e custos diferentes.</p>
+        <div class="sorting-grid">
+          <article class="sorting-card"><strong>Bubble Sort</strong><span>Compara vizinhos e troca os que estão fora de ordem.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Selection Sort</strong><span>Procura o menor item e o coloca na próxima posição correta.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Insertion Sort</strong><span>Insere cada novo item no lugar certo da parte já ordenada.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Merge Sort</strong><span>Divide a lista, ordena partes menores e depois junta tudo.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Quick Sort</strong><span>Escolhe um pivô e separa valores menores e maiores ao redor dele.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+        </div>
+        <div class="sorting-note"><strong>Não confunda:</strong> BFS, DFS e A* não são algoritmos tradicionais de ordenação de listas. Eles são algoritmos de busca/percurso em grafos. Já a <strong>ordenação topológica</strong> realmente produz uma ordem, mas respeitando dependências de um grafo direcionado sem ciclos.</div>
+      </div>
+
+      <div class="section-divider-title"><span class="eyebrow">Percorrendo grafos</span><h3>Agora sim: BFS, DFS, A* e ordenação topológica</h3><p>As animações usam a mesma geometria para facilitar a comparação. Observe principalmente a ordem em que os nós mudam de estado.</p></div>
 
       <div class="algorithm-visual-grid">
         <article class="algorithm-visual-card">
-          <span class="algorithm-badge">BFS</span>
-          <h3>Busca em Largura</h3>
-          <p>Pense em ondas se espalhando na água: primeiro os pontos mais próximos, depois os mais distantes.</p>
-          <div class="algorithm-demo demo-bfs" aria-label="Animação da busca em largura">
-            <span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span>
-            <span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span>
-          </div>
-          <ul class="algorithm-steps">
-            <li><strong>1</strong><span>Começa no vértice inicial.</span></li>
-            <li><strong>2</strong><span>Visita todos os vizinhos próximos.</span></li>
-            <li><strong>3</strong><span>Depois avança para o próximo “nível”.</span></li>
-          </ul>
+          <span class="algorithm-badge">BFS</span><h3>Busca em Largura</h3><p>Pense em ondas se espalhando: primeiro os vizinhos mais próximos, depois os mais distantes.</p>
+          <div class="algorithm-demo demo-bfs" aria-label="Animação da busca em largura"><div class="demo-stage"><span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span><span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span></div></div>
+          <div class="demo-caption"><strong>Ordem ilustrada</strong><div class="demo-order"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span></div></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Começa no vértice inicial.</span></li><li><strong>2</strong><span>Visita todos os vizinhos próximos.</span></li><li><strong>3</strong><span>Depois avança para o próximo nível.</span></li></ul>
         </article>
 
         <article class="algorithm-visual-card">
-          <span class="algorithm-badge">DFS</span>
-          <h3>Busca em Profundidade</h3>
-          <p>Pense em explorar um corredor até o fim antes de voltar para testar outra porta.</p>
-          <div class="algorithm-demo demo-dfs" aria-label="Animação da busca em profundidade">
-            <span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span>
-            <span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span>
-          </div>
-          <ul class="algorithm-steps">
-            <li><strong>1</strong><span>Escolhe um caminho.</span></li>
-            <li><strong>2</strong><span>Vai o mais longe possível por ele.</span></li>
-            <li><strong>3</strong><span>Quando trava, volta e tenta outra opção.</span></li>
-          </ul>
+          <span class="algorithm-badge">DFS</span><h3>Busca em Profundidade</h3><p>Pense em explorar um corredor até o fim antes de voltar para testar outra porta.</p>
+          <div class="algorithm-demo demo-dfs" aria-label="Animação da busca em profundidade"><div class="demo-stage"><span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span><span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span></div></div>
+          <div class="demo-caption"><strong>Ordem ilustrada</strong><div class="demo-order"><span>A</span><span>B</span><span>D</span><span>F</span><span>E</span><span>C</span></div></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Escolhe um caminho.</span></li><li><strong>2</strong><span>Vai o mais longe possível por ele.</span></li><li><strong>3</strong><span>Quando trava, volta e tenta outra opção.</span></li></ul>
         </article>
 
         <article class="algorithm-visual-card">
-          <span class="algorithm-badge">A*</span>
-          <h3>Busca com estimativa</h3>
-          <p>Além do custo já gasto, considera uma estimativa do quanto ainda falta para chegar ao destino.</p>
-          <div class="algorithm-demo demo-astar" aria-label="Animação simplificada do A estrela">
-            <span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span>
-            <span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span>
-          </div>
-          <ul class="algorithm-steps">
-            <li><strong>1</strong><span>Calcula o custo que já percorreu: g(n).</span></li>
-            <li><strong>2</strong><span>Estima o custo até o destino: h(n).</span></li>
-            <li><strong>3</strong><span>Prioriza o menor valor de f(n) = g(n) + h(n).</span></li>
-          </ul>
+          <span class="algorithm-badge">A*</span><h3>Busca com estimativa</h3><p>Além do custo já gasto, considera uma estimativa do quanto ainda falta para chegar ao destino.</p>
+          <div class="algorithm-demo demo-astar" aria-label="Animação simplificada do A estrela"><div class="demo-stage"><span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span><span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span></div></div>
+          <div class="demo-caption"><strong>Ideia visual</strong><span>considera custo percorrido + estimativa restante</span></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Calcula o custo que já percorreu: g(n).</span></li><li><strong>2</strong><span>Estima o custo até o destino: h(n).</span></li><li><strong>3</strong><span>Prioriza o menor f(n) = g(n) + h(n).</span></li></ul>
         </article>
 
         <article class="algorithm-visual-card">
-          <span class="algorithm-badge">Ordem</span>
-          <h3>Ordenação topológica</h3>
-          <p>É usada quando algumas tarefas precisam acontecer antes de outras, como disciplinas com pré-requisitos.</p>
-          <div class="algorithm-demo demo-topological" aria-label="Animação conceitual de uma ordenação topológica">
-            <span class="demo-line l1 type-arrow"></span><span class="demo-line l2 type-arrow"></span><span class="demo-line l3 type-arrow"></span><span class="demo-line l4 type-arrow"></span><span class="demo-line l5 type-arrow"></span><span class="demo-line l6 type-arrow"></span>
-            <span class="demo-node n1">1</span><span class="demo-node n2">2</span><span class="demo-node n3">3</span><span class="demo-node n4">4</span><span class="demo-node n5">5</span><span class="demo-node n6">6</span>
-          </div>
-          <ul class="algorithm-steps">
-            <li><strong>1</strong><span>Observa quais tarefas não dependem de outras.</span></li>
-            <li><strong>2</strong><span>Coloca essas tarefas primeiro.</span></li>
-            <li><strong>3</strong><span>Repete até formar uma ordem válida.</span></li>
-          </ul>
+          <span class="algorithm-badge">Ordem</span><h3>Ordenação topológica</h3><p>É usada quando algumas tarefas precisam acontecer antes de outras, como disciplinas com pré-requisitos.</p>
+          <div class="algorithm-demo demo-topological" aria-label="Animação conceitual de uma ordenação topológica"><div class="demo-stage"><span class="demo-line l1 type-arrow"></span><span class="demo-line l2 type-arrow"></span><span class="demo-line l3 type-arrow"></span><span class="demo-line l4 type-arrow"></span><span class="demo-line l5 type-arrow"></span><span class="demo-line l6 type-arrow"></span><span class="demo-node n1">1</span><span class="demo-node n2">2</span><span class="demo-node n3">3</span><span class="demo-node n4">4</span><span class="demo-node n5">5</span><span class="demo-node n6">6</span></div></div>
+          <div class="demo-caption"><strong>Objetivo</strong><span>colocar dependências antes de quem depende delas</span></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Observa tarefas sem dependências pendentes.</span></li><li><strong>2</strong><span>Coloca essas tarefas primeiro.</span></li><li><strong>3</strong><span>Repete até formar uma ordem válida.</span></li></ul>
         </article>
       </div>
 
-      <div class="section-divider-title">
-        <span class="eyebrow">Comparação rápida</span>
-        <h3>Qual é a diferença entre eles?</h3>
-      </div>
-
-      <div class="comparison-table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr><th>Algoritmo</th><th>Ideia principal</th><th>Estrutura</th><th>Quando faz sentido</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>BFS</strong></td><td>Explora por camadas</td><td>Fila (FIFO)</td><td>Menor número de arestas em grafo não ponderado</td></tr>
-            <tr><td><strong>DFS</strong></td><td>Vai fundo e depois retorna</td><td>Pilha / recursão</td><td>Exploração, ciclos e conectividade</td></tr>
-            <tr><td><strong>A*</strong></td><td>Usa custo + estimativa</td><td>Fila de prioridade</td><td>Encontrar boas rotas até um destino conhecido</td></tr>
-            <tr><td><strong>Topológica</strong></td><td>Respeita dependências</td><td>Fila/pilha, dependendo da abordagem</td><td>Ordem de tarefas em grafos direcionados sem ciclos</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="beginner-tip">
-        <strong>Importante:</strong> BFS, DFS e A* são algoritmos de busca/percurso em grafos. Ordenação topológica é um algoritmo de ordenação específico para dependências em grafos direcionados sem ciclos.
-      </div>
+      <div class="section-divider-title"><span class="eyebrow">Comparação rápida</span><h3>Qual é a diferença entre eles?</h3></div>
+      <div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Algoritmo</th><th>O que faz</th><th>Estrutura</th><th>Quando faz sentido</th></tr></thead><tbody><tr><td><strong>BFS</strong></td><td>Explora por camadas</td><td>Fila (FIFO)</td><td>Menor número de arestas em grafo não ponderado</td></tr><tr><td><strong>DFS</strong></td><td>Vai fundo e depois retorna</td><td>Pilha / recursão</td><td>Exploração, ciclos e conectividade</td></tr><tr><td><strong>A*</strong></td><td>Usa custo + estimativa</td><td>Fila de prioridade</td><td>Rotas até um destino conhecido</td></tr><tr><td><strong>Topológica</strong></td><td>Cria uma ordem válida</td><td>Fila/pilha</td><td>Dependências em grafos direcionados sem ciclos</td></tr></tbody></table></div>
     </section>
 
     <section id="laboratorio" class="lab-section">
-      <div class="lab-heading">
-        <div>
-          <span class="eyebrow">Agora teste de verdade</span>
-          <h2>Monte um grafo e veja o algoritmo agir</h2>
-        </div>
-        <p>Clique no quadro para criar vértices. Arraste para mover. Selecione dois vértices para criar uma conexão.</p>
-      </div>
-
+      <div class="lab-heading"><div><span class="eyebrow">Agora teste de verdade</span><h2>Monte um grafo e veja o algoritmo agir</h2></div><p>Clique no quadro para criar vértices. Arraste para mover. Selecione dois vértices para criar uma conexão.</p></div>
       <div class="layout">
         <aside class="panel controls-panel">
-          <section>
-            <div class="section-title-row"><h2>1. Monte o grafo</h2><span class="step-chip">Editor</span></div>
-            <p class="hint">Selecione dois vértices para criar, editar ou remover a aresta entre eles.</p>
-            <div class="control-grid">
-              <label>Peso da aresta<input id="edgeWeight" type="number" min="1" step="1" value="1" /></label>
-              <button id="connectBtn" class="button secondary">Conectar</button>
-            </div>
-            <div class="button-row compact-actions">
-              <button id="updateWeightBtn" class="button ghost">Atualizar peso</button>
-              <button id="removeEdgeBtn" class="button ghost danger">Remover aresta</button>
-              <button id="removeNodesBtn" class="button ghost danger">Remover vértice(s)</button>
-            </div>
-            <div class="button-row">
-              <button id="exampleBtn" class="button ghost">Carregar exemplo</button>
-              <button id="clearBtn" class="button danger ghost">Limpar grafo</button>
-            </div>
-          </section>
-
-          <section>
-            <div class="section-title-row"><h2>2. Escolha o algoritmo</h2><span class="step-chip">Busca</span></div>
-            <div class="select-grid">
-              <label>Origem<select id="startNode"></select></label>
-              <label>Destino<select id="targetNode"></select></label>
-            </div>
-            <div class="algorithm-buttons">
-              <button class="button primary" data-algorithm="bfs">Executar BFS</button>
-              <button class="button primary" data-algorithm="dfs">Executar DFS</button>
-              <button class="button primary" data-algorithm="astar">Executar A*</button>
-            </div>
-          </section>
-
-          <section>
-            <div class="section-title-row"><h2>3. Controle a execução</h2><span class="step-chip">Passo a passo</span></div>
-            <div class="playback-grid">
-              <button id="pauseBtn" class="button secondary" disabled>Pausar</button>
-              <button id="stepBtn" class="button secondary" disabled>Avançar passo</button>
-              <button id="resetVisualizationBtn" class="button ghost" disabled>Reiniciar visual</button>
-            </div>
-            <label class="speed-control">Velocidade
-              <select id="speedSelect"><option value="900">Lenta</option><option value="520" selected>Normal</option><option value="260">Rápida</option></select>
-            </label>
-          </section>
-
-          <section class="interaction-help">
-            <h2>Como usar</h2>
-            <p><strong>Clique vazio:</strong> cria um vértice.</p>
-            <p><strong>Clique no vértice:</strong> seleciona.</p>
-            <p><strong>Arraste:</strong> reposiciona o vértice.</p>
-            <p><strong>Dois vértices selecionados:</strong> podem ser conectados com um peso.</p>
-          </section>
+          <section><div class="section-title-row"><h2>1. Monte o grafo</h2><span class="step-chip">Editor</span></div><p class="hint">Selecione dois vértices para criar, editar ou remover a aresta entre eles.</p><div class="control-grid"><label>Peso da aresta<input id="edgeWeight" type="number" min="1" step="1" value="1" /></label><button id="connectBtn" class="button secondary">Conectar</button></div><div class="button-row compact-actions"><button id="updateWeightBtn" class="button ghost">Atualizar peso</button><button id="removeEdgeBtn" class="button ghost danger">Remover aresta</button><button id="removeNodesBtn" class="button ghost danger">Remover vértice(s)</button></div><div class="button-row"><button id="exampleBtn" class="button ghost">Carregar exemplo</button><button id="clearBtn" class="button danger ghost">Limpar grafo</button></div></section>
+          <section><div class="section-title-row"><h2>2. Escolha o algoritmo</h2><span class="step-chip">Busca</span></div><div class="select-grid"><label>Origem<select id="startNode"></select></label><label>Destino<select id="targetNode"></select></label></div><div class="algorithm-buttons"><button class="button primary" data-algorithm="bfs">Executar BFS</button><button class="button primary" data-algorithm="dfs">Executar DFS</button><button class="button primary" data-algorithm="astar">Executar A*</button></div></section>
+          <section><div class="section-title-row"><h2>3. Controle a execução</h2><span class="step-chip">Passo a passo</span></div><div class="playback-grid"><button id="pauseBtn" class="button secondary" disabled>Pausar</button><button id="stepBtn" class="button secondary" disabled>Avançar passo</button><button id="resetVisualizationBtn" class="button ghost" disabled>Reiniciar visual</button></div><label class="speed-control">Velocidade<select id="speedSelect"><option value="900">Lenta</option><option value="520" selected>Normal</option><option value="260">Rápida</option></select></label></section>
+          <section class="interaction-help"><h2>Como usar</h2><p><strong>Clique vazio:</strong> cria um vértice.</p><p><strong>Clique no vértice:</strong> seleciona.</p><p><strong>Arraste:</strong> reposiciona o vértice.</p><p><strong>Dois vértices selecionados:</strong> podem ser conectados com um peso.</p></section>
         </aside>
-
-        <section class="workspace" aria-label="Laboratório de grafos">
-          <div class="workspace-toolbar">
-            <div><strong>Área de visualização</strong><span id="selectionText">Nenhum vértice selecionado</span></div>
-            <div class="legend" aria-label="Legenda">
-              <span><i class="dot default"></i>Normal</span><span><i class="dot frontier"></i>Fronteira</span><span><i class="dot current"></i>Atual</span><span><i class="dot visited"></i>Visitado</span><span><i class="dot path"></i>Caminho</span>
-            </div>
-          </div>
-          <svg id="graphCanvas" viewBox="0 0 1000 650" role="img" aria-label="Editor visual de grafos"></svg>
-          <div class="result-panel">
-            <div><span class="result-label">Status</span><strong id="statusText" aria-live="polite">Exemplo carregado. Escolha origem, destino e um algoritmo.</strong></div>
-            <div><span class="result-label">Ordem de visita</span><code id="visitOrder">—</code></div>
-            <div><span class="result-label">Fronteira / estrutura</span><code id="frontierResult">—</code></div>
-            <div><span class="result-label">Caminho encontrado</span><code id="pathResult">—</code></div>
-          </div>
-        </section>
+        <section class="workspace" aria-label="Laboratório de grafos"><div class="workspace-toolbar"><div><strong>Área de visualização</strong><span id="selectionText">Nenhum vértice selecionado</span></div><div class="legend" aria-label="Legenda"><span><i class="dot default"></i>Normal</span><span><i class="dot frontier"></i>Fronteira</span><span><i class="dot current"></i>Atual</span><span><i class="dot visited"></i>Visitado</span><span><i class="dot path"></i>Caminho</span></div></div><svg id="graphCanvas" viewBox="0 0 1000 650" role="img" aria-label="Editor visual de grafos"></svg><div class="result-panel"><div><span class="result-label">Status</span><strong id="statusText" aria-live="polite">Exemplo carregado. Escolha origem, destino e um algoritmo.</strong></div><div><span class="result-label">Ordem de visita</span><code id="visitOrder">—</code></div><div><span class="result-label">Fronteira / estrutura</span><code id="frontierResult">—</code></div><div><span class="result-label">Caminho encontrado</span><code id="pathResult">—</code></div></div></section>
       </div>
     </section>
   </main>
