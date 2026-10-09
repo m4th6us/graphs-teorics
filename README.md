@@ -1,48 +1,54 @@
 # GraphLab — Teoria dos Grafos
 
-Projeto acadêmico em **HTML, CSS e JavaScript puro** para estudar Teoria dos Grafos de forma visual e interativa.
+Projeto acadêmico em **HTML, CSS e JavaScript puro** para ensinar Teoria dos Grafos de forma visual, interativa e acessível para quem está começando do zero.
 
-O site combina uma revisão teórica curta com um laboratório em que o usuário monta um grafo e acompanha a execução de algoritmos de busca.
+A proposta é evitar uma introdução excessivamente técnica: primeiro o site explica grafos com analogias simples e exemplos do cotidiano, depois apresenta os principais conceitos e algoritmos visualmente e, por fim, permite experimentar tudo em um laboratório interativo.
 
-## Algoritmos implementados
+## O que o site ensina
 
-- **BFS (Breadth-First Search)** — busca em largura usando fila.
-- **DFS (Depth-First Search)** — busca em profundidade usando pilha.
-- **A\*** — busca informada que considera o custo percorrido `g(n)` e uma heurística `h(n)` até o destino.
+### Introdução para iniciantes
 
-No A*, a heurística usa a distância euclidiana entre os vértices, multiplicada pelo menor quociente `peso/distância` das arestas existentes. Isso mantém a heurística compatível com os pesos positivos utilizados no laboratório.
+- o que é um grafo usando exemplos como amizades, mapas e entregas;
+- diferença entre vértices, arestas e pesos;
+- significado de vizinho, caminho e ciclo;
+- exemplos reais de uso em redes sociais, GPS, internet, dependências e logística;
+- tipos de grafo: direcionado, não direcionado e ponderado.
 
-## Funcionalidades
+### Algoritmos apresentados visualmente
 
-### Conteúdo teórico
+O conteúdo possui animações próprias em CSS que funcionam como pequenos GIFs explicativos.
 
-- explicação sobre vértices, arestas e pesos;
-- exemplos de aplicação de grafos no mundo real;
-- resumo de BFS, DFS e A*;
-- indicação do tipo de grafo utilizado no projeto.
+- **BFS (Breadth-First Search)** — busca em largura, explorando o grafo por níveis;
+- **DFS (Depth-First Search)** — busca em profundidade, avançando por um caminho antes de retornar;
+- **A\*** — busca informada que considera o custo percorrido `g(n)` e uma estimativa `h(n)` até o destino;
+- **Ordenação topológica** — apresentada conceitualmente como exemplo de ordenação baseada em dependências em grafos direcionados acíclicos.
 
-### Editor visual
+O site também diferencia algoritmos de **busca/percurso** de um algoritmo de **ordenação topológica**, evitando tratar BFS, DFS e A* incorretamente como algoritmos de ordenação.
+
+## Laboratório interativo
+
+O laboratório continua permitindo experimentar BFS, DFS e A* em um grafo criado pelo próprio usuário.
 
 - criação de vértices clicando no quadro;
 - movimentação de vértices por arrastar e soltar;
 - seleção de até dois vértices;
 - criação de arestas não direcionadas;
 - definição e alteração do peso das arestas;
-- remoção de arestas;
-- remoção de vértices e das arestas associadas;
+- remoção de arestas e vértices;
 - grafo de exemplo carregado inicialmente;
-- escolha de vértice de origem e destino.
-
-### Visualização dos algoritmos
-
+- escolha de vértice de origem e destino;
 - execução visual de BFS, DFS e A*;
 - destaque do vértice atual, fronteira, visitados e caminho final;
 - exibição da ordem de visita;
 - exibição da fila, pilha ou conjunto aberto durante a execução;
 - exibição de `f(n)` na fronteira do A*;
 - cálculo do custo total do caminho no A*;
-- controles de pausar, continuar, avançar um passo e reiniciar apenas a visualização;
+- controles para pausar, continuar, avançar um passo e reiniciar a visualização;
 - três velocidades de animação.
+
+## A* no laboratório
+
+No A*, a heurística usa a distância euclidiana entre os vértices, multiplicada pelo menor quociente `peso/distância` das arestas existentes. Isso mantém a heurística compatível com os pesos positivos utilizados no laboratório.
 
 ## Como executar
 
@@ -64,10 +70,15 @@ Depois acesse `http://localhost:8000`.
 .
 ├── index.html
 ├── styles.css
+├── learning.css
 ├── script.js
 └── README.md
 ```
 
+- `styles.css`: estilos originais da interface e do laboratório;
+- `learning.css`: componentes educativos, diagramas e animações visuais;
+- `script.js`: editor do grafo e execução dos algoritmos do laboratório.
+
 ## Objetivo acadêmico
 
-A aplicação busca tornar mais intuitivo o estudo de grafos ao permitir que o usuário observe como diferentes estratégias percorrem a mesma estrutura, como a fronteira de busca se altera ao longo do tempo e como pesos e heurística influenciam a busca de caminhos.
+O GraphLab busca tornar Teoria dos Grafos compreensível mesmo para alguém sem familiaridade com o assunto. Em vez de começar por fórmulas ou definições formais, a interface parte de situações conhecidas, transforma essas situações em grafos e só então apresenta os algoritmos e estruturas utilizados para percorrê-los.
