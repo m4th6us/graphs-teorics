@@ -1,51 +1,50 @@
 # GraphLab — Teoria dos Grafos
 
-Projeto acadêmico em **HTML, CSS e JavaScript puro** para ensinar Teoria dos Grafos de forma visual, interativa e acessível para quem está começando do zero.
+Projeto acadêmico em **HTML, CSS e JavaScript puro** para ensinar Teoria dos Grafos de forma visual e interativa para quem está começando do zero.
 
-A experiência foi reorganizada para seguir uma sequência didática simples: primeiro o vocabulário, depois o conceito de grafo, em seguida tipos de grafos, o significado de algoritmo, algoritmos de ordenação e, por fim, os algoritmos específicos usados em grafos.
+A página começa pelo vocabulário, passa pela ideia de grafo, explica o que é um algoritmo e só depois chega em BFS, DFS, A* e ordenação topológica.
 
 ## Ordem de aprendizado
 
 1. **Vocabulário básico** — vértice, aresta, vizinho, caminho, peso e ciclo.
-2. **O que é um grafo** — analogias com amizades, mapas, internet e logística.
+2. **O que é um grafo** — exemplos com amizades, mapas, internet e logística.
 3. **Tipos de grafos** — direcionado, não direcionado e ponderado.
-4. **O que é um algoritmo** — explicado como uma sequência de passos para resolver um problema.
-5. **O que é um algoritmo de ordenação** — conceito geral e exemplos com Bubble, Selection, Insertion, Merge e Quick Sort.
+4. **O que é um algoritmo** — uma sequência de passos para resolver um problema.
+5. **Algoritmos de ordenação** — Bubble, Selection, Insertion, Merge e Quick Sort.
 6. **Algoritmos em grafos** — BFS, DFS, A* e ordenação topológica.
-7. **Laboratório interativo** — criação de grafos e execução passo a passo de BFS, DFS e A*.
+7. **Laboratório interativo** — criação de grafos e execução passo a passo.
 
-## Conteúdo para iniciantes
+## Exemplos visuais
 
-O site evita partir diretamente para termos técnicos. Cada conceito é apresentado com uma definição curta, exemplo cotidiano e contexto visual.
+Os desenhos educativos usam coordenadas compartilhadas entre linhas e nós para evitar o desalinhamento que acontecia quando as conexões eram montadas com largura percentual e rotação em CSS.
 
-- vértices como pessoas, cidades ou tarefas;
-- arestas como amizades, estradas ou dependências;
-- pesos como distância, tempo, preço ou custo;
-- caminhos como sequências de conexões;
-- ciclos como caminhos que retornam ao ponto inicial.
+Isso vale para:
+
+- exemplo de amizades;
+- tipos de grafo;
+- BFS;
+- DFS;
+- A*;
+- ordenação topológica.
 
 ## Algoritmos de ordenação
 
-O projeto agora explica primeiro o conceito geral de ordenação: receber elementos fora de ordem e reorganizá-los segundo um critério.
+Os exemplos de ordenação não ficam apenas destacando uma barra. As barras agora **mudam de posição durante a animação**, para deixar visível a ideia principal de cada estratégia.
 
-São apresentados visualmente:
+- **Bubble Sort** — mostra trocas entre vizinhos;
+- **Selection Sort** — leva o menor restante para a próxima posição;
+- **Insertion Sort** — encaixa itens na parte já ordenada;
+- **Merge Sort** — separa visualmente grupos e depois os reúne em ordem;
+- **Quick Sort** — destaca o pivô e reorganiza os valores ao redor dele.
 
-- **Bubble Sort** — compara elementos vizinhos;
-- **Selection Sort** — seleciona o próximo menor elemento;
-- **Insertion Sort** — insere cada item na posição correta;
-- **Merge Sort** — divide, ordena partes menores e combina;
-- **Quick Sort** — utiliza um pivô para separar os elementos.
-
-Esses algoritmos são apresentados como contexto. Eles não devem ser confundidos com BFS, DFS ou A*, que são algoritmos de busca/percurso em grafos.
+Esses algoritmos servem como introdução ao conceito de ordenação. BFS, DFS e A* são algoritmos de busca/percurso em grafos, não algoritmos tradicionais de ordenação de listas.
 
 ## Algoritmos de grafos apresentados
 
-- **BFS (Breadth-First Search)** — busca em largura, explorando por níveis;
-- **DFS (Depth-First Search)** — busca em profundidade, seguindo um caminho antes de retornar;
-- **A\*** — busca informada que combina custo percorrido `g(n)` e estimativa `h(n)`;
-- **Ordenação topológica** — cria uma ordem válida respeitando dependências em um grafo direcionado sem ciclos.
-
-As demonstrações usam uma geometria padronizada para que os mesmos nós e conexões permaneçam alinhados em todos os cards, facilitando a comparação visual entre os algoritmos.
+- **BFS (Breadth-First Search)** — explora por níveis;
+- **DFS (Depth-First Search)** — segue um caminho até onde der antes de voltar;
+- **A\*** — combina custo percorrido `g(n)` e estimativa `h(n)`;
+- **Ordenação topológica** — monta uma ordem que respeita dependências em um grafo direcionado sem ciclos.
 
 ## Laboratório interativo
 
@@ -90,19 +89,21 @@ Depois acesse `http://localhost:8000`.
 ├── sorting.css
 ├── sorting-visuals.css
 ├── algorithm-demos.css
+├── visual-fixes.css
 ├── script.js
 └── README.md
 ```
 
 - `styles.css`: interface principal e laboratório;
-- `learning.css`: componentes educativos já existentes;
+- `learning.css`: componentes educativos;
 - `vocabulary.css`: seção inicial de vocabulário;
 - `algorithm-basics.css`: introdução ao conceito de algoritmo;
-- `sorting.css`: cards e explicações dos algoritmos de ordenação;
-- `sorting-visuals.css`: elementos visuais dos exemplos de ordenação;
-- `algorithm-demos.css`: geometria padronizada e alinhamento das animações de grafos;
+- `sorting.css`: layout dos exemplos de ordenação;
+- `sorting-visuals.css`: animações com mudança real de posição;
+- `algorithm-demos.css`: animações dos algoritmos de grafos;
+- `visual-fixes.css`: geometria exata das linhas e nós dos exemplos;
 - `script.js`: editor do grafo e execução dos algoritmos interativos.
 
 ## Objetivo acadêmico
 
-O GraphLab busca tornar Teoria dos Grafos compreensível para alguém sem familiaridade com o tema. A interface constrói primeiro o vocabulário necessário, associa conceitos a situações conhecidas e só depois apresenta algoritmos e estruturas mais técnicas.
+O GraphLab tenta explicar Teoria dos Grafos sem começar pelo vocabulário mais pesado. A ideia é usar exemplos conhecidos, mostrar o desenho e então apresentar a parte mais técnica.
