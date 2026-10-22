@@ -61,6 +61,17 @@ O laboratório permite:
 - pausar, avançar passo a passo e reiniciar a visualização;
 - alterar a velocidade da animação.
 
+## Avaliação de conhecimentos
+
+A página inclui uma seção **Avaliação** com acesso ao Google Forms do GraphLab e QR Code local para abertura rápida em dispositivos móveis.
+
+- 5 questões objetivas e obrigatórias;
+- 1 ponto por questão, totalizando 5 pontos;
+- correção automática e resultado exibido logo após o envio;
+- conteúdo introdutório: grafo, vértice, aresta, amizade em grafos e BFS.
+
+[Abrir a avaliação do GraphLab](https://docs.google.com/forms/d/e/1FAIpQLSdKzO21_4-qKIzz4f32jUMu-4fLdw8ZWQ9qbJLzUZgPyhsYmw/viewform?usp=publish-editor)
+
 ## A* no laboratório
 
 A heurística utiliza a distância euclidiana entre os vértices, multiplicada pelo menor quociente `peso/distância` das arestas existentes. Isso mantém a estimativa compatível com os pesos positivos usados no laboratório.
@@ -90,6 +101,8 @@ Depois acesse `http://localhost:8000`.
 ├── sorting-visuals.css
 ├── algorithm-demos.css
 ├── visual-fixes.css
+├── assets/
+│   └── graphlab-quiz-qr.svg
 ├── script.js
 └── README.md
 ```
@@ -102,6 +115,7 @@ Depois acesse `http://localhost:8000`.
 - `sorting-visuals.css`: animações com mudança real de posição;
 - `algorithm-demos.css`: animações dos algoritmos de grafos;
 - `visual-fixes.css`: geometria exata das linhas e nós dos exemplos;
+- `assets/graphlab-quiz-qr.svg`: QR Code da avaliação;
 - `script.js`: editor do grafo e execução dos algoritmos interativos.
 
 ## Objetivo acadêmico
