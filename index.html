@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GraphLab: teoria dos grafos explicada do zero, com exemplos visuais, algoritmos animados e laboratório interativo." />
+  <meta name="description" content="GraphLab: introdução à Teoria dos Grafos com conceitos fundamentais, exemplos visuais, demonstrações de algoritmos e laboratório interativo." />
   <title>GraphLab — Teoria dos Grafos</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="learning.css" />
@@ -29,20 +29,20 @@
     </nav>
 
     <div id="inicio" class="hero-content">
-      <span class="eyebrow">Teoria dos Grafos • começando do zero</span>
-      <h1>Grafos sem enrolação.</h1>
+      <span class="eyebrow">Teoria dos Grafos • introdução aos fundamentos</span>
+      <h1>Teoria dos Grafos: conceitos e aplicações</h1>
       <p>
-        Se “vértice”, “aresta”, BFS e DFS parecem um monte de nome estranho, tranquilo.
-        A gente começa pelo básico, desenha tudo e só depois chega nos algoritmos.
+        Conheça os conceitos fundamentais de vértices, arestas e algoritmos de busca em grafos.
+        O conteúdo apresenta definições, exemplos visuais e aplicações práticas de forma progressiva.
       </p>
       <div class="hero-actions">
-        <a class="button primary link-button" href="#vocabulario">Começar do começo</a>
-        <a class="button ghost link-button" href="#laboratorio">Quero testar direto</a>
+        <a class="button primary link-button" href="#vocabulario">Estudar os conceitos</a>
+        <a class="button ghost link-button" href="#laboratorio">Acessar o laboratório</a>
       </div>
       <div class="hero-stats" aria-label="Resumo do projeto">
-        <div><strong>Do zero</strong><span>sem pressupor que você já sabe o assunto</span></div>
-        <div><strong>Visual</strong><span>desenhos e animações no lugar de textão</span></div>
-        <div><strong>Interativo</strong><span>monte seu próprio grafo e teste</span></div>
+        <div><strong>Introdutório</strong><span>conteúdo acessível a quem está começando</span></div>
+        <div><strong>Visual</strong><span>representações gráficas e animações explicativas</span></div>
+        <div><strong>Interativo</strong><span>construa grafos e execute algoritmos</span></div>
       </div>
     </div>
   </header>
@@ -50,30 +50,30 @@
   <main>
     <section id="vocabulario" class="content-section vocabulary-section">
       <div class="section-heading vocabulary-lead">
-        <span class="eyebrow">Antes de tudo</span>
-        <h2>As palavras que aparecem o tempo inteiro</h2>
-        <p>Não precisa decorar. A ideia aqui é só você bater o olho num termo e já saber mais ou menos do que estão falando.</p>
+        <span class="eyebrow">Conceitos fundamentais</span>
+        <h2>Vocabulário essencial de Teoria dos Grafos</h2>
+        <p>Conheça os principais termos utilizados para representar grafos e compreender suas propriedades.</p>
       </div>
 
       <div class="vocabulary-grid">
-        <article class="vocabulary-card"><span class="vocabulary-number">1</span><h3>Vértice ou nó</h3><p>É uma coisa do grafo. Pode ser uma pessoa, uma cidade, uma página, uma tarefa...</p><span class="vocabulary-example">Num mapa, uma cidade pode ser um vértice.</span></article>
-        <article class="vocabulary-card"><span class="vocabulary-number">2</span><h3>Aresta</h3><p>É a ligação entre dois vértices. Basicamente, a linha que conecta uma coisa à outra.</p><span class="vocabulary-example">Uma estrada ligando duas cidades é uma aresta.</span></article>
-        <article class="vocabulary-card"><span class="vocabulary-number">3</span><h3>Vizinho</h3><p>É um vértice ligado direto a outro. Sem passar por ninguém no meio.</p><span class="vocabulary-example">Se A liga direto em B, B é vizinho de A.</span></article>
-        <article class="vocabulary-card"><span class="vocabulary-number">4</span><h3>Caminho</h3><p>É uma sequência de ligações que leva de um ponto até outro.</p><span class="vocabulary-example">A → B → C → D é um caminho de A até D.</span></article>
-        <article class="vocabulary-card"><span class="vocabulary-number">5</span><h3>Peso</h3><p>É um valor colocado numa aresta. Pode ser distância, tempo, preço, custo...</p><span class="vocabulary-example">Uma estrada de 120 km pode ter peso 120.</span></article>
-        <article class="vocabulary-card"><span class="vocabulary-number">6</span><h3>Ciclo</h3><p>É quando você sai de um ponto, segue algumas ligações e consegue voltar para onde começou.</p><span class="vocabulary-example">A → B → C → A fecha um ciclo.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">1</span><h3>Vértice ou nó</h3><p>É um elemento do grafo que pode representar entidades como pessoas, cidades, páginas ou tarefas.</p><span class="vocabulary-example">Em uma rede de transporte, cada cidade pode ser representada por um vértice.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">2</span><h3>Aresta</h3><p>É a conexão ou relação estabelecida entre dois vértices de um grafo.</p><span class="vocabulary-example">Uma estrada entre duas cidades pode ser representada por uma aresta.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">3</span><h3>Vizinho</h3><p>Em um grafo não direcionado, dois vértices são vizinhos quando existe uma aresta entre eles.</p><span class="vocabulary-example">Se existe uma aresta entre A e B, esses vértices são adjacentes.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">4</span><h3>Caminho</h3><p>É uma sequência de vértices em que cada par consecutivo está conectado por uma aresta, sem repetição de vértices.</p><span class="vocabulary-example">A → B → C → D é um caminho de A até D.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">5</span><h3>Peso</h3><p>É um valor numérico associado a uma aresta, utilizado para representar grandezas como distância, tempo ou custo.</p><span class="vocabulary-example">Uma estrada de 120 km pode ter peso 120.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">6</span><h3>Ciclo</h3><p>É um percurso fechado que retorna ao vértice inicial sem repetir outros vértices.</p><span class="vocabulary-example">A → B → C → A fecha um ciclo.</span></article>
       </div>
 
-      <div class="vocabulary-tip"><strong>Atalho mental:</strong> vértice = coisa, aresta = ligação, caminho = sequência de ligações, peso = quanto aquela ligação custa.</div>
+      <div class="vocabulary-tip"><strong>Em resumo:</strong> vértice = elemento representado; aresta = conexão; caminho = sequência de vértices conectados; peso = valor associado à aresta.</div>
     </section>
 
     <section id="conceitos" class="content-section">
       <div class="section-heading">
-        <span class="eyebrow">Beleza, agora junta tudo</span>
-        <h2>Então... o que é um grafo?</h2>
+        <span class="eyebrow">Representação de relações</span>
+        <h2>O que é um grafo?</h2>
         <p>
-          Um grafo é um jeito de representar coisas e como elas se conectam.
-          Só isso. O poder dele aparece quando a gente começa a perguntar “quem se conecta com quem?”, “como eu chego lá?” ou “qual caminho custa menos?”.
+          Um grafo é uma estrutura matemática composta por vértices e arestas que representam elementos e suas relações.
+          Esse modelo permite estudar conexões, identificar caminhos e analisar custos em redes de transporte, comunicação e outros sistemas.
         </p>
       </div>
 
