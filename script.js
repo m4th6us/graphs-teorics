@@ -361,10 +361,13 @@ function removeSelectedNodes() {
   if (!state.selected.length || state.running) return;
   const ids = new Set(state.selected);
   const names = selectedLabels().join(', ');
+  const isSingleNode = ids.size === 1;
   state.nodes = state.nodes.filter((node) => !ids.has(node.id));
   state.edges = state.edges.filter((edge) => !ids.has(edge.from) && !ids.has(edge.to));
   state.selected = [];
-  statusText.textContent = `Vértice(s) ${names} removido(s), junto com suas arestas.`;
+  statusText.textContent = isSingleNode
+    ? `Vértice ${names} removido, incluindo suas arestas.`
+    : `Vértices ${names} removidos, incluindo suas arestas.`;
   resetExecutionAfterEdit();
   render();
 }
@@ -548,7 +551,7 @@ function dfs(start, target) {
       current,
       visited: [...order],
       frontier: [...stack].reverse(),
-      structureLabel: 'Pilha (topo →)',
+      structureLabel: 'Pilha (topo primeiro)',
     });
 
     if (current === target) break;
@@ -627,7 +630,7 @@ function astar(start, target) {
       current,
       visited: [...order],
       frontier: orderedOpen,
-      structureLabel: 'Aberta por f(n)',
+      structureLabel: 'Lista aberta (ordenada por f(n))',
       scores: orderedOpen.map((id) => ({
         id,
         g: gScore.get(id),
@@ -682,9 +685,10 @@ function finishExecution() {
   applyVisualClasses();
 
   if (result.path.length) {
+    const edgeCount = Math.max(0, result.path.length - 1);
     const costSuffix = algorithmName === 'A*' && result.cost != null
       ? ` • custo total: ${result.cost}`
-      : ` • ${Math.max(0, result.path.length - 1)} aresta(s)`;
+      : ` • ${edgeCount} ${edgeCount === 1 ? 'aresta' : 'arestas'}`;
     pathResult.textContent = `${labels(result.path).join(' → ')}${costSuffix}`;
     statusText.textContent = `${algorithmName} concluído: caminho encontrado.`;
   } else {
@@ -772,7 +776,7 @@ function togglePause() {
   if (!state.running || !state.execution) return;
   state.paused = !state.paused;
   statusText.textContent = state.paused
-    ? `${state.execution.algorithmName} pausado. Use “Avançar passo” ou continue a execução.`
+    ? `${state.execution.algorithmName} pausado. Utilize “Avançar passo” ou “Continuar”.`
     : `${state.execution.algorithmName} retomado.`;
   updatePlaybackControls();
 }
@@ -801,7 +805,7 @@ function clearGraph() {
   state.selected = [];
   state.nextId = 1;
   resetExecutionAfterEdit();
-  statusText.textContent = 'Grafo limpo. Clique na área de visualização para criar um vértice.';
+  statusText.textContent = 'Todos os vértices e arestas foram removidos. Clique na área de visualização para criar um vértice.';
   render();
 }
 
