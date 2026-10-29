@@ -134,70 +134,70 @@
 
     <section id="algoritmos" class="content-section algorithms-section">
       <div class="section-heading">
-        <span class="eyebrow">Antes de BFS, DFS e companhia</span>
+        <span class="eyebrow">Fundamentos de algoritmos</span>
         <h2>O que é um algoritmo?</h2>
-        <p>É só uma sequência de passos para resolver alguma coisa. Tipo uma receita: você começa com algo, segue uma ordem e chega num resultado.</p>
+        <p>Um algoritmo é uma sequência finita de instruções bem definidas para resolver um problema ou executar uma tarefa. Assim como uma receita, ele estabelece etapas organizadas para alcançar um resultado.</p>
       </div>
 
       <div class="algorithm-foundation-grid">
         <article class="algorithm-foundation-card">
-          <span class="card-kicker">Exemplo fora da programação</span><h3>Fazer café já serve como exemplo</h3><p>Não precisa complicar: você tem passos numa ordem e quer chegar numa xícara pronta.</p>
+          <span class="card-kicker">Exemplo cotidiano</span><h3>Preparação de café</h3><p>Uma receita estabelece etapas que devem ser executadas para obter um resultado, ilustrando a lógica sequencial de um algoritmo.</p>
           <div class="recipe-steps"><div class="recipe-step"><b>1</b><span>Colocar água.</span></div><div class="recipe-step"><b>2</b><span>Aquecer.</span></div><div class="recipe-step"><b>3</b><span>Passar pelo café.</span></div><div class="recipe-step"><b>4</b><span>Servir.</span></div></div>
         </article>
         <article class="algorithm-foundation-card">
-          <span class="card-kicker">No código</span><h3>A lógica é a mesma</h3><p>No grafo, o algoritmo recebe os pontos e conexões e segue uma regra para decidir o que fazer em seguida.</p>
-          <div class="algorithm-definition"><strong>Entrada:</strong> o grafo e, às vezes, um começo e um destino.<br /><strong>Processamento:</strong> a regra do algoritmo decide o próximo passo.<br /><strong>Saída:</strong> pode ser uma ordem de visita, um caminho, um custo etc.</div>
+          <span class="card-kicker">Na computação</span><h3>Algoritmos aplicados a grafos</h3><p>Um algoritmo processa os vértices e as arestas de um grafo de acordo com regras específicas, como visitar vértices ou encontrar caminhos.</p>
+          <div class="algorithm-definition"><strong>Entrada:</strong> o grafo e, conforme o problema, os vértices de origem e destino.<br /><strong>Processamento:</strong> execução das instruções definidas pelo algoritmo.<br /><strong>Saída:</strong> ordem de visita, caminho encontrado ou custo calculado.</div>
         </article>
       </div>
 
       <div class="sorting-explainer">
-        <span class="eyebrow">E quando o problema é colocar em ordem?</span>
-        <h3>Aí entram os algoritmos de ordenação</h3>
-        <p>Pega uma lista bagunçada, tipo <strong>8, 2, 5, 1</strong>, e reorganiza para <strong>1, 2, 5, 8</strong>. O resultado final pode ser igual, mas o jeito de chegar nele muda bastante.</p>
+        <span class="eyebrow">Introdução à ordenação</span>
+        <h3>Algoritmos de ordenação de listas</h3>
+        <p>Considere a lista <strong>8, 2, 5, 1</strong>. Diferentes algoritmos podem organizá-la como <strong>1, 2, 5, 8</strong>, utilizando estratégias distintas de comparação e movimentação dos elementos.</p>
         <div class="sorting-grid">
-          <article class="sorting-card"><strong>Bubble Sort</strong><span>Vai comparando vizinhos e trocando de lugar.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="sorting-card"><strong>Selection Sort</strong><span>Procura o menor e leva ele para a próxima posição certa.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="sorting-card"><strong>Insertion Sort</strong><span>Pega um item e encaixa ele no lugar certo da parte já ordenada.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="sorting-card"><strong>Merge Sort</strong><span>Quebra em partes menores, ordena e depois junta de novo.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="sorting-card"><strong>Quick Sort</strong><span>Escolhe um pivô e separa menores de um lado e maiores do outro.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Bubble Sort</strong><span>Compara elementos adjacentes e troca suas posições quando necessário.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Selection Sort</strong><span>Seleciona o menor elemento da parte não ordenada e o posiciona corretamente.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Insertion Sort</strong><span>Insere cada elemento na posição adequada da parte já ordenada.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Merge Sort</strong><span>Divide a lista em partes menores e combina as partes ordenadas.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Quick Sort</strong><span>Seleciona um pivô e particiona os elementos para ordenar a lista.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
         </div>
-        <div class="sorting-note"><strong>Detalhe importante:</strong> BFS, DFS e A* não ordenam uma lista. Eles percorrem/buscam num grafo. A <strong>ordenação topológica</strong> tem “ordenação” no nome porque ela realmente monta uma ordem, mas respeitando dependências.</div>
+        <div class="sorting-note"><strong>Distinção importante:</strong> Bubble Sort e os demais algoritmos desta seção ordenam listas. BFS, DFS e A* realizam buscas em grafos. Já a <strong>ordenação topológica</strong> organiza os vértices de um grafo direcionado acíclico conforme suas dependências.</div>
       </div>
 
-      <div class="section-divider-title"><span class="eyebrow">Agora vamos andar pelo grafo</span><h3>BFS, DFS, A* e ordenação topológica</h3><p>Os quatro desenhos usam o mesmo grafo. O que muda é a regra usada para decidir o próximo nó.</p></div>
+      <div class="section-divider-title"><span class="eyebrow">Busca e organização de dependências</span><h3>BFS, DFS, A* e ordenação topológica</h3><p>As demonstrações compartilham uma disposição visual semelhante dos vértices. BFS, DFS e A* ilustram estratégias de busca; a ordenação topológica considera relações direcionadas de dependência.</p></div>
 
       <div class="algorithm-visual-grid">
         <article class="algorithm-visual-card">
-          <span class="algorithm-badge">BFS</span><h3>Busca em Largura</h3><p>Vai abrindo por camadas: primeiro quem está perto, depois quem está mais longe.</p>
+          <span class="algorithm-badge">BFS</span><h3>Busca em Largura</h3><p>Visita os vértices por níveis, explorando primeiro aqueles alcançados por um menor número de arestas a partir da origem.</p>
           <div class="algorithm-demo demo-bfs" aria-label="Animação da busca em largura"><div class="demo-stage"><span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span><span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span></div></div>
           <div class="demo-caption"><strong>Uma ordem possível</strong><div class="demo-order"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span></div></div>
-          <ul class="algorithm-steps"><li><strong>1</strong><span>Começa em A.</span></li><li><strong>2</strong><span>Olha os vizinhos de A.</span></li><li><strong>3</strong><span>Só depois segue para a próxima camada.</span></li></ul>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Inicia a busca no vértice A.</span></li><li><strong>2</strong><span>Adiciona os vizinhos à fila.</span></li><li><strong>3</strong><span>Explora os próximos níveis na ordem da fila.</span></li></ul>
         </article>
 
         <article class="algorithm-visual-card">
-          <span class="algorithm-badge">DFS</span><h3>Busca em Profundidade</h3><p>Escolhe um caminho e vai nele até onde der. Quando acaba, volta e tenta outro.</p>
+          <span class="algorithm-badge">DFS</span><h3>Busca em Profundidade</h3><p>Explora um ramo do grafo em profundidade. Ao esgotar as possibilidades, retorna para investigar outros ramos.</p>
           <div class="algorithm-demo demo-dfs" aria-label="Animação da busca em profundidade"><div class="demo-stage"><span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span><span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span></div></div>
           <div class="demo-caption"><strong>Uma ordem possível</strong><div class="demo-order"><span>A</span><span>B</span><span>D</span><span>F</span><span>E</span><span>C</span></div></div>
-          <ul class="algorithm-steps"><li><strong>1</strong><span>Escolhe um caminho.</span></li><li><strong>2</strong><span>Vai fundo nele.</span></li><li><strong>3</strong><span>Se não der mais, volta.</span></li></ul>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Seleciona um vértice inicial.</span></li><li><strong>2</strong><span>Explora um ramo em profundidade.</span></li><li><strong>3</strong><span>Retrocede para explorar alternativas.</span></li></ul>
         </article>
 
         <article class="algorithm-visual-card">
-          <span class="algorithm-badge">A*</span><h3>Busca com uma “noção” do destino</h3><p>Além do que já gastou, ele usa uma estimativa de quanto ainda falta para chegar.</p>
+          <span class="algorithm-badge">A*</span><h3>Busca orientada por heurística</h3><p>Combina o custo acumulado desde a origem com uma estimativa do custo restante até o destino para orientar a exploração.</p>
           <div class="algorithm-demo demo-astar" aria-label="Animação simplificada do A estrela"><div class="demo-stage"><span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span><span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span></div></div>
-          <div class="demo-caption"><strong>A conta por trás</strong><span>custo já gasto + estimativa do que falta</span></div>
-          <ul class="algorithm-steps"><li><strong>1</strong><span>g(n): o que já custou.</span></li><li><strong>2</strong><span>h(n): uma estimativa do que falta.</span></li><li><strong>3</strong><span>f(n) = g(n) + h(n).</span></li></ul>
+          <div class="demo-caption"><strong>Função de avaliação</strong><span>custo acumulado + estimativa de custo restante</span></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>g(n): custo acumulado desde a origem.</span></li><li><strong>2</strong><span>h(n): estimativa do custo até o destino.</span></li><li><strong>3</strong><span>f(n) = g(n) + h(n).</span></li></ul>
         </article>
 
         <article class="algorithm-visual-card">
-          <span class="algorithm-badge">Ordem</span><h3>Ordenação topológica</h3><p>Serve para situações em que uma coisa precisa acontecer antes da outra, tipo pré-requisito de matéria ou dependência de tarefa.</p>
+          <span class="algorithm-badge">Ordem</span><h3>Ordenação topológica</h3><p>Organiza os vértices de um grafo direcionado acíclico (DAG) em uma sequência que respeita as dependências, como pré-requisitos de disciplinas.</p>
           <div class="algorithm-demo demo-topological" aria-label="Animação conceitual de uma ordenação topológica"><div class="demo-stage"><span class="demo-line l1 type-arrow"></span><span class="demo-line l2 type-arrow"></span><span class="demo-line l3 type-arrow"></span><span class="demo-line l4 type-arrow"></span><span class="demo-line l5 type-arrow"></span><span class="demo-line l6 type-arrow"></span><span class="demo-node n1">1</span><span class="demo-node n2">2</span><span class="demo-node n3">3</span><span class="demo-node n4">4</span><span class="demo-node n5">5</span><span class="demo-node n6">6</span></div></div>
-          <div class="demo-caption"><strong>A regra</strong><span>uma dependência vem antes de quem depende dela</span></div>
-          <ul class="algorithm-steps"><li><strong>1</strong><span>Pega algo sem dependência pendente.</span></li><li><strong>2</strong><span>Coloca na ordem.</span></li><li><strong>3</strong><span>Repete até terminar.</span></li></ul>
+          <div class="demo-caption"><strong>Regra fundamental</strong><span>cada pré-requisito deve aparecer antes da atividade que depende dele</span></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Identifica vértices sem dependências pendentes.</span></li><li><strong>2</strong><span>Adiciona um desses vértices à sequência.</span></li><li><strong>3</strong><span>Repete até ordenar todos os vértices.</span></li></ul>
         </article>
       </div>
 
-      <div class="section-divider-title"><span class="eyebrow">Resumo rápido</span><h3>Quando eu usaria cada um?</h3></div>
-      <div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Algoritmo</th><th>Jeito de pensar</th><th>Usa</th><th>Bom para</th></tr></thead><tbody><tr><td><strong>BFS</strong></td><td>Abre por camadas</td><td>Fila</td><td>Menor número de arestas em grafo não ponderado</td></tr><tr><td><strong>DFS</strong></td><td>Vai até o fundo e volta</td><td>Pilha / recursão</td><td>Exploração, ciclos e conectividade</td></tr><tr><td><strong>A*</strong></td><td>Custo + estimativa</td><td>Fila de prioridade</td><td>Rotas até um destino conhecido</td></tr><tr><td><strong>Topológica</strong></td><td>Respeita dependências</td><td>Fila ou pilha</td><td>Ordenar tarefas de um DAG</td></tr></tbody></table></div>
+      <div class="section-divider-title"><span class="eyebrow">Comparação de algoritmos</span><h3>Principais aplicações e características</h3></div>
+      <div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Algoritmo</th><th>Estratégia</th><th>Estrutura de dados</th><th>Aplicação</th></tr></thead><tbody><tr><td><strong>BFS</strong></td><td>Exploração por níveis</td><td>Fila</td><td>Encontrar caminhos com menos arestas, sem considerar pesos</td></tr><tr><td><strong>DFS</strong></td><td>Exploração em profundidade</td><td>Pilha ou recursão</td><td>Investigar conectividade e caminhos, sem garantir o menor trajeto</td></tr><tr><td><strong>A*</strong></td><td>Custo acumulado e heurística</td><td>Conjunto aberto por prioridade</td><td>Buscar caminhos de menor custo até um destino</td></tr><tr><td><strong>Topológica</strong></td><td>Respeito às dependências</td><td>Fila ou pilha</td><td>Ordenar atividades em um grafo direcionado acíclico (DAG)</td></tr></tbody></table></div>
     </section>
 
     <section id="laboratorio" class="lab-section">
