@@ -189,9 +189,9 @@
         </article>
 
         <article class="algorithm-visual-card">
-          <span class="algorithm-badge">Ordem</span><h3>Ordenação topológica</h3><p>Organiza os vértices de um grafo direcionado acíclico (DAG) em uma sequência que respeita as dependências, como pré-requisitos de disciplinas.</p>
-          <div class="algorithm-demo demo-topological" aria-label="Animação conceitual de uma ordenação topológica"><div class="demo-stage"><span class="demo-line l1 type-arrow"></span><span class="demo-line l2 type-arrow"></span><span class="demo-line l3 type-arrow"></span><span class="demo-line l4 type-arrow"></span><span class="demo-line l5 type-arrow"></span><span class="demo-line l6 type-arrow"></span><span class="demo-node n1">1</span><span class="demo-node n2">2</span><span class="demo-node n3">3</span><span class="demo-node n4">4</span><span class="demo-node n5">5</span><span class="demo-node n6">6</span></div></div>
-          <div class="demo-caption"><strong>Regra fundamental</strong><span>cada pré-requisito deve aparecer antes da atividade que depende dele</span></div>
+          <span class="algorithm-badge">Ordem</span><h3>Ordenação topológica</h3><p>Organiza os vértices de um grafo direcionado acíclico (DAG) em uma sequência que respeita as dependências. Neste exemplo linear, cada vértice de 2 a 6 depende do anterior.</p>
+          <div class="algorithm-demo demo-topological" aria-label="Animação de uma ordenação topológica linear: 1, 2, 3, 4, 5 e 6"><div class="demo-stage"><span class="demo-node n1">1</span><span class="demo-node n2">2</span><span class="demo-node n3">3</span><span class="demo-node n4">4</span><span class="demo-node n5">5</span><span class="demo-node n6">6</span></div></div>
+          <div class="demo-caption"><strong>Ordem válida: 1 → 2 → 3 → 4 → 5 → 6</strong><span>as setas indicam as dependências entre as etapas</span></div>
           <ul class="algorithm-steps"><li><strong>1</strong><span>Identifica vértices sem dependências pendentes.</span></li><li><strong>2</strong><span>Adiciona um desses vértices à sequência.</span></li><li><strong>3</strong><span>Repete até ordenar todos os vértices.</span></li></ul>
         </article>
       </div>
