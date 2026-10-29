@@ -26,7 +26,7 @@
 .sort-bars i:nth-child(4) { left: 61%; height: 35px; }
 .sort-bars i:nth-child(5) { left: 80%; height: 44px; }
 
-/* Bubble Sort: the tall bars bubble to the right through neighbour swaps. */
+/* Bubble Sort: as barras mudam de posição por meio de trocas entre elementos adjacentes. */
 .sorting-card:nth-child(1) .sort-bars i:nth-child(1) { animation: bubble1 6s ease-in-out infinite; }
 .sorting-card:nth-child(1) .sort-bars i:nth-child(2) { animation: bubble2 6s ease-in-out infinite; }
 .sorting-card:nth-child(1) .sort-bars i:nth-child(3) { animation: bubble3 6s ease-in-out infinite; }
@@ -38,7 +38,7 @@
 @keyframes bubble4 { 0%,28%{left:61%} 45%,62%{left:42%} 75%,100%{left:23%} }
 @keyframes bubble5 { 0%,58%{left:80%} 75%,100%{left:42%} }
 
-/* Selection Sort: each pass pulls the smallest remaining bar forward. */
+/* Selection Sort: cada etapa posiciona o menor elemento restante. */
 .sorting-card:nth-child(2) .sort-bars i:nth-child(1) { animation: select1 6s ease-in-out infinite; }
 .sorting-card:nth-child(2) .sort-bars i:nth-child(2) { animation: select2 6s ease-in-out infinite; }
 .sorting-card:nth-child(2) .sort-bars i:nth-child(3) { animation: select3 6s ease-in-out infinite; }
@@ -50,7 +50,7 @@
 @keyframes select4 { 0%,28%{left:61%} 42%,100%{left:23%} }
 @keyframes select5 { 0%,58%{left:80%} 72%,100%{left:42%} }
 
-/* Insertion Sort: the current item slides left into the already sorted part. */
+/* Insertion Sort: o elemento atual é inserido na parte previamente ordenada. */
 .sorting-card:nth-child(3) .sort-bars i:nth-child(1) { animation: insert1 6s ease-in-out infinite; }
 .sorting-card:nth-child(3) .sort-bars i:nth-child(2) { animation: insert2 6s ease-in-out infinite; }
 .sorting-card:nth-child(3) .sort-bars i:nth-child(3) { animation: insert3 6s ease-in-out infinite; }
@@ -62,7 +62,7 @@
 @keyframes insert4 { 0%,46%{left:61%} 62%,100%{left:23%} }
 @keyframes insert5 { 0%,76%{left:80%} 90%,100%{left:42%} }
 
-/* Merge Sort: the two halves separate visually, then come back merged. */
+/* Merge Sort: as partes são separadas visualmente e depois reunidas em ordem. */
 .sorting-card:nth-child(4) .sort-bars i { animation-duration: 6s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
 .sorting-card:nth-child(4) .sort-bars i:nth-child(1) { animation-name: merge1; }
 .sorting-card:nth-child(4) .sort-bars i:nth-child(2) { animation-name: merge2; }
@@ -75,7 +75,7 @@
 @keyframes merge4 { 0%,25%{left:61%;bottom:8px} 42%,58%{left:61%;bottom:1px} 76%,100%{left:23%;bottom:8px} }
 @keyframes merge5 { 0%,25%{left:80%;bottom:8px} 42%,58%{left:80%;bottom:1px} 76%,100%{left:42%;bottom:8px} }
 
-/* Quick Sort: the middle-height bar acts as a visual pivot while values split around it. */
+/* Quick Sort: uma barra representa o pivô durante a divisão dos elementos. */
 .sorting-card:nth-child(5) .sort-bars i { animation-duration: 6s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
 .sorting-card:nth-child(5) .sort-bars i:nth-child(1) { animation-name: quick1; }
 .sorting-card:nth-child(5) .sort-bars i:nth-child(2) { animation-name: quick2; }
