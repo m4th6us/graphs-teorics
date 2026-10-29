@@ -79,57 +79,57 @@
 
       <div class="beginner-intro">
         <article class="beginner-copy">
-          <span class="card-kicker">Um exemplo bem simples</span>
-          <h3>Pensa numa rede de amigos.</h3>
-          <p>Cada pessoa vira uma bolinha. Se duas pessoas são amigas, a gente liga as duas com uma linha. Pronto: isso já é um grafo.</p>
+          <span class="card-kicker">Exemplo introdutório</span>
+          <h3>Representação de uma rede de amizades</h3>
+          <p>Cada pessoa é representada por um vértice. Uma aresta indica a existência de uma amizade entre duas pessoas.</p>
           <div class="simple-rule">
-            <span><strong>Bolinha:</strong> um vértice.</span>
-            <span><strong>Linha:</strong> uma aresta.</span>
-            <span><strong>Número na linha:</strong> o peso daquela ligação.</span>
+            <span><strong>Círculo:</strong> representação visual de um vértice.</span>
+            <span><strong>Linha:</strong> representação visual de uma aresta.</span>
+            <span><strong>Valor na aresta:</strong> representa o peso, quando o grafo é ponderado.</span>
           </div>
         </article>
 
         <article class="visual-example">
-          <div class="visual-title"><strong>Quatro pessoas, algumas amizades</strong><span>olhe quem está ligado a quem</span></div>
+          <div class="visual-title"><strong>Rede de amizades entre quatro pessoas</strong><span>observe as conexões entre os vértices</span></div>
           <div class="mini-graph" aria-label="Exemplo visual de um grafo de amizades">
             <span class="mini-edge edge-ab"></span><span class="mini-edge edge-ad"></span><span class="mini-edge edge-bd"></span><span class="mini-edge edge-cd"></span>
             <span class="mini-node friend-a">Ana</span><span class="mini-node friend-b">Bia</span><span class="mini-node friend-c">Caio</span><span class="mini-node friend-d">Davi</span>
           </div>
-          <p>Ana conhece Bia e Davi. Caio conhece Davi. Pelo desenho dá para sacar isso sem ficar lendo uma lista de relações.</p>
+          <p>As arestas indicam amizades entre Ana e Bia, Ana e Davi, Bia e Davi, além de Caio e Davi. A representação permite identificar diretamente essas relações.</p>
         </article>
       </div>
 
       <div class="analogy-strip">
-        <article class="analogy-item"><strong>🗺️ Mapa</strong><span>Cidades viram vértices. Estradas viram arestas. Distância pode virar peso.</span></article>
-        <article class="analogy-item"><strong>🌐 Internet</strong><span>Computadores e roteadores são os pontos. As conexões ficam nas arestas.</span></article>
-        <article class="analogy-item"><strong>📦 Entregas</strong><span>Locais são os vértices. Rotas são as arestas. Tempo de viagem pode ser o peso.</span></article>
+        <article class="analogy-item"><strong>🗺️ Mapa</strong><span>Cidades podem ser vértices; estradas, arestas; e distâncias, pesos.</span></article>
+        <article class="analogy-item"><strong>🌐 Internet</strong><span>Computadores e roteadores são representados por vértices, enquanto as conexões de rede são representadas por arestas.</span></article>
+        <article class="analogy-item"><strong>📦 Entregas</strong><span>Locais de entrega são vértices, rotas são arestas e tempos de deslocamento podem ser utilizados como pesos.</span></article>
       </div>
 
-      <div class="section-divider-title"><span class="eyebrow">Onde isso aparece?</span><h3>Em mais lugar do que parece</h3></div>
+      <div class="section-divider-title"><span class="eyebrow">Onde isso aparece?</span><h3>Aplicações da Teoria dos Grafos</h3></div>
       <div class="real-examples-grid">
-        <article class="real-example-card"><span class="example-icon">👥</span><h3>Redes sociais</h3><p>Pessoas e perfis ligados por amizade, follow, mensagem ou interação.</p></article>
-        <article class="real-example-card"><span class="example-icon">🚗</span><h3>GPS e rotas</h3><p>Ruas, cruzamentos e cidades ligados por caminhos com distância e tempo.</p></article>
-        <article class="real-example-card"><span class="example-icon">🔗</span><h3>Sites e links</h3><p>Cada página pode apontar para várias outras. É uma rede gigante de conexões.</p></article>
-        <article class="real-example-card"><span class="example-icon">💻</span><h3>Redes de computadores</h3><p>Máquinas, servidores e roteadores conectados entre si.</p></article>
-        <article class="real-example-card"><span class="example-icon">🧩</span><h3>Dependências</h3><p>Uma tarefa depende de outra? Um pacote depende de outro? Grafo resolve bem esse tipo de relação.</p></article>
-        <article class="real-example-card"><span class="example-icon">📦</span><h3>Logística</h3><p>Hubs, clientes e rotas formam uma rede que pode ser analisada e otimizada.</p></article>
+        <article class="real-example-card"><span class="example-icon">👥</span><h3>Redes sociais</h3><p>Perfis podem ser modelados como vértices e relações de amizade ou acompanhamento como arestas.</p></article>
+        <article class="real-example-card"><span class="example-icon">🚗</span><h3>GPS e rotas</h3><p>Cruzamentos podem ser representados por vértices e vias por arestas, com pesos associados à distância ou ao tempo de viagem.</p></article>
+        <article class="real-example-card"><span class="example-icon">🔗</span><h3>Sites e links</h3><p>Páginas são vértices e links entre páginas podem ser representados por arestas direcionadas.</p></article>
+        <article class="real-example-card"><span class="example-icon">💻</span><h3>Redes de computadores</h3><p>Dispositivos e roteadores representam vértices; enlaces de comunicação representam arestas.</p></article>
+        <article class="real-example-card"><span class="example-icon">🧩</span><h3>Dependências</h3><p>Grafos direcionados permitem representar dependências entre tarefas, disciplinas ou componentes de software.</p></article>
+        <article class="real-example-card"><span class="example-icon">📦</span><h3>Logística</h3><p>Centros de distribuição, destinos e rotas formam redes que podem ser analisadas para otimizar deslocamentos.</p></article>
       </div>
     </section>
 
     <section id="tipos" class="content-section">
       <div class="section-heading">
-        <span class="eyebrow">Nem todo grafo funciona igual</span>
-        <h2>Três tipos que vale conhecer</h2>
-        <p>A diferença mais fácil de notar é: a ligação tem direção? E ela tem algum valor?</p>
+        <span class="eyebrow">Propriedades dos grafos</span>
+        <h2>Direção e pesos das arestas</h2>
+        <p>Os grafos podem ser classificados conforme a orientação de suas arestas e a presença de pesos. Essas características são independentes: um grafo direcionado também pode ser ponderado.</p>
       </div>
 
       <div class="graph-types-grid">
-        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one"></span><span class="type-line two"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Não direcionado</span><h3>Vai e volta</h3><p>Se A está ligado a B, a ligação vale para os dois lados. Amizade é um bom exemplo.</p></article>
-        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one type-arrow"></span><span class="type-line two type-arrow"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Direcionado</span><h3>A seta importa</h3><p>A → B não quer dizer que B → A exista. Seguir alguém numa rede social funciona mais ou menos assim.</p></article>
-        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one weighted"></span><span class="type-line two weighted"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Ponderado</span><h3>A ligação tem um valor</h3><p>Esse número pode ser km, minutos, preço ou qualquer outro custo que faça sentido no problema.</p></article>
+        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one"></span><span class="type-line two"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Não direcionado</span><h3>Arestas sem orientação</h3><p>A aresta entre A e B representa uma conexão nos dois sentidos. Redes de amizade são um exemplo comum.</p></article>
+        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one type-arrow"></span><span class="type-line two type-arrow"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Direcionado</span><h3>Arestas orientadas</h3><p>A aresta A → B indica uma relação de A para B e não implica a existência da aresta B → A.</p></article>
+        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one weighted"></span><span class="type-line two weighted"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Ponderado</span><h3>Arestas com pesos</h3><p>Cada aresta possui um valor que pode representar distância, tempo, custo ou outra grandeza do problema.</p></article>
       </div>
 
-      <div class="beginner-tip"><strong>No laboratório daqui:</strong> o grafo é <strong>não direcionado e ponderado</strong>. Então dá para usar a conexão nos dois sentidos e cada aresta tem um peso.</div>
+      <div class="beginner-tip"><strong>No laboratório interativo:</strong> o grafo é <strong>não direcionado e ponderado</strong>. Cada aresta conecta dois vértices nos dois sentidos e possui um peso numérico.</div>
     </section>
 
     <section id="algoritmos" class="content-section algorithms-section">
