@@ -201,13 +201,13 @@
     </section>
 
     <section id="laboratorio" class="lab-section">
-      <div class="lab-heading"><div><span class="eyebrow">Chega de só olhar</span><h2>Monte um grafo e teste</h2></div><p>Clique numa área vazia para criar um vértice. Arraste para mover. Selecione dois para criar uma conexão.</p></div>
+      <div class="lab-heading"><div><span class="eyebrow">Aplicação prática</span><h2>Construa e explore seu próprio grafo</h2></div><p>Clique em uma área vazia para criar um vértice, arraste-o para reposicioná-lo e selecione dois vértices para adicionar uma aresta.</p></div>
       <div class="layout">
         <aside class="panel controls-panel">
-          <section><div class="section-title-row"><h2>1. Monte o grafo</h2><span class="step-chip">Editor</span></div><p class="hint">Selecione dois vértices para criar, editar ou remover a aresta entre eles.</p><div class="control-grid"><label>Peso da aresta<input id="edgeWeight" type="number" min="1" step="1" value="1" /></label><button id="connectBtn" class="button secondary">Conectar</button></div><div class="button-row compact-actions"><button id="updateWeightBtn" class="button ghost">Atualizar peso</button><button id="removeEdgeBtn" class="button ghost danger">Remover aresta</button><button id="removeNodesBtn" class="button ghost danger">Remover vértice(s)</button></div><div class="button-row"><button id="exampleBtn" class="button ghost">Carregar exemplo</button><button id="clearBtn" class="button danger ghost">Limpar grafo</button></div></section>
-          <section><div class="section-title-row"><h2>2. Escolha o algoritmo</h2><span class="step-chip">Busca</span></div><div class="select-grid"><label>Origem<select id="startNode"></select></label><label>Destino<select id="targetNode"></select></label></div><div class="algorithm-buttons"><button class="button primary" data-algorithm="bfs">Executar BFS</button><button class="button primary" data-algorithm="dfs">Executar DFS</button><button class="button primary" data-algorithm="astar">Executar A*</button></div></section>
-          <section><div class="section-title-row"><h2>3. Acompanhe</h2><span class="step-chip">Passo a passo</span></div><div class="playback-grid"><button id="pauseBtn" class="button secondary" disabled>Pausar</button><button id="stepBtn" class="button secondary" disabled>Avançar passo</button><button id="resetVisualizationBtn" class="button ghost" disabled>Reiniciar visual</button></div><label class="speed-control">Velocidade<select id="speedSelect"><option value="900">Lenta</option><option value="520" selected>Normal</option><option value="260">Rápida</option></select></label></section>
-          <section class="interaction-help"><h2>Como mexer</h2><p><strong>Clique no vazio:</strong> cria um vértice.</p><p><strong>Clique num vértice:</strong> seleciona.</p><p><strong>Arraste:</strong> move o vértice.</p><p><strong>Selecione dois:</strong> aí você consegue conectar os dois.</p></section>
+          <section><div class="section-title-row"><h2>1. Monte o grafo</h2><span class="step-chip">Editor</span></div><p class="hint">Selecione dois vértices para criar, editar ou remover a aresta entre eles.</p><div class="control-grid"><label>Peso da aresta<input id="edgeWeight" type="number" min="1" step="1" value="1" /></label><button id="connectBtn" class="button secondary">Conectar</button></div><div class="button-row compact-actions"><button id="updateWeightBtn" class="button ghost">Atualizar peso</button><button id="removeEdgeBtn" class="button ghost danger">Remover aresta</button><button id="removeNodesBtn" class="button ghost danger">Remover vértices</button></div><div class="button-row"><button id="exampleBtn" class="button ghost">Carregar exemplo</button><button id="clearBtn" class="button danger ghost">Limpar grafo</button></div></section>
+          <section><div class="section-title-row"><h2>2. Escolha o algoritmo</h2><span class="step-chip">Busca</span></div><div class="select-grid"><label>Origem<select id="startNode"></select></label><label>Destino<select id="targetNode"></select></label></div><p class="hint">BFS e DFS percorrem as conexões sem considerar os pesos das arestas. A* utiliza esses pesos e uma estimativa do custo restante para buscar uma rota de menor custo.</p><div class="algorithm-buttons"><button class="button primary" data-algorithm="bfs">Executar BFS</button><button class="button primary" data-algorithm="dfs">Executar DFS</button><button class="button primary" data-algorithm="astar">Executar A*</button></div></section>
+          <section><div class="section-title-row"><h2>3. Acompanhe</h2><span class="step-chip">Passo a passo</span></div><div class="playback-grid"><button id="pauseBtn" class="button secondary" disabled>Pausar</button><button id="stepBtn" class="button secondary" disabled>Avançar passo</button><button id="resetVisualizationBtn" class="button ghost" disabled>Reiniciar visualização</button></div><label class="speed-control">Velocidade<select id="speedSelect"><option value="900">Lenta</option><option value="520" selected>Normal</option><option value="260">Rápida</option></select></label></section>
+          <section class="interaction-help"><h2>Como utilizar o laboratório</h2><p><strong>Clique em uma área vazia:</strong> cria um vértice.</p><p><strong>Clique em um vértice:</strong> seleciona o elemento.</p><p><strong>Arraste um vértice:</strong> altera sua posição.</p><p><strong>Selecione dois vértices:</strong> permite criar, editar ou remover uma aresta entre eles.</p></section>
         </aside>
 
         <section class="workspace" aria-label="Laboratório de grafos">
@@ -220,20 +220,20 @@
 
     <section id="avaliacao" class="content-section assessment-section" aria-labelledby="assessment-title">
       <div class="section-heading">
-        <span class="eyebrow">Fechando o ciclo</span>
-        <h2 id="assessment-title">Bora conferir o que ficou?</h2>
-        <p>São cinco perguntas rápidas sobre os conceitos que você acabou de ver. Ao enviar, você recebe a correção automática e pode revisar o que precisar.</p>
+        <span class="eyebrow">Verificação da aprendizagem</span>
+        <h2 id="assessment-title">Avalie seus conhecimentos</h2>
+        <p>Responda a cinco questões objetivas sobre os conceitos apresentados. Ao concluir, consulte a correção automática para identificar os conteúdos que precisam ser revisados.</p>
       </div>
 
       <article class="assessment-card">
         <div class="assessment-copy">
-          <span class="card-kicker">Quiz de revisão</span>
-          <h3>Teste seu básico de Teoria dos Grafos</h3>
-          <p>Vértice, aresta, amizades em grafos e busca em largura. Leva menos de dois minutos e não precisa preencher nenhum dado pessoal.</p>
+          <span class="card-kicker">Questionário de revisão</span>
+          <h3>Revisão dos fundamentos de Teoria dos Grafos</h3>
+          <p>O questionário aborda grafos, vértices, arestas, relações de amizade e busca em largura.</p>
           <ul class="assessment-details" aria-label="Detalhes da avaliação">
             <li><strong>5 perguntas</strong><span>múltipla escolha</span></li>
             <li><strong>Correção automática</strong><span>resultado ao enviar</span></li>
-            <li><strong>100% introdutório</strong><span>com base nesta página</span></li>
+            <li><strong>Nível introdutório</strong><span>conteúdo apresentado nesta página</span></li>
           </ul>
           <a class="button primary assessment-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdKzO21_4-qKIzz4f32jUMu-4fLdw8ZWQ9qbJLzUZgPyhsYmw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Abrir avaliação</a>
         </div>
