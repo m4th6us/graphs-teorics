@@ -768,6 +768,11 @@ select:focus,
   letter-spacing: -0.04em;
 }
 
+.assessment-language-note {
+  font-size: 0.81rem;
+  color: var(--muted);
+}
+
 .assessment-copy > p {
   max-width: 610px;
   margin: 0;
