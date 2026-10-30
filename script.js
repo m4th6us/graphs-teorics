@@ -120,10 +120,10 @@ function updateSelectors() {
 
 function updateSelectionText() {
   if (!state.selected.length) {
-    selectionText.textContent = 'Nenhum vértice selecionado';
+    selectionText.textContent = t('Nenhum vértice selecionado');
   } else {
     const selected = selectedLabels();
-    selectionText.textContent = `Selecionado${selected.length > 1 ? 's' : ''}: ${selected.join(' e ')}`;
+    selectionText.textContent = t(selected.length > 1 ? 'Selecionados: {names}' : 'Selecionado: {names}', { names: selected.join(locale === 'en-US' ? ' and ' : ' e ') });
   }
 
   const pairSelected = state.selected.length === 2;
@@ -138,7 +138,7 @@ function updateSelectionText() {
 
 function updatePlaybackControls() {
   pauseBtn.disabled = !state.running;
-  pauseBtn.textContent = state.paused ? 'Continuar' : 'Pausar';
+  pauseBtn.textContent = state.paused ? t('Continuar') : t('Pausar');
   stepBtn.disabled = !state.running;
   resetVisualizationBtn.disabled = !state.execution && !state.running;
 
@@ -189,8 +189,8 @@ function applyVisualClasses() {
 function render() {
   svg.innerHTML = '';
 
-  const edgeLayer = createSvgElement('g', { 'aria-label': 'Arestas' });
-  const nodeLayer = createSvgElement('g', { 'aria-label': 'Vértices' });
+  const edgeLayer = createSvgElement('g', { 'aria-label': t('Arestas') });
+  const nodeLayer = createSvgElement('g', { 'aria-label': t('Vértices') });
 
   state.edges.forEach((edge) => {
     const a = getNode(edge.from);
@@ -200,7 +200,7 @@ function render() {
     const group = createSvgElement('g', {
       class: 'edge-group',
       'data-edge-group': edge.id,
-      'aria-label': `Aresta entre ${a.label} e ${b.label}, peso ${edge.weight}`,
+      'aria-label': t('Aresta entre {a} e {b}, peso {weight}', { a: a.label, b: b.label, weight: edge.weight }),
     });
 
     const line = createSvgElement('line', {
@@ -240,7 +240,7 @@ function render() {
       transform: `translate(${node.x} ${node.y})`,
       tabindex: '0',
       role: 'button',
-      'aria-label': `Vértice ${node.label}`,
+      'aria-label': t('Vértice {label}', { label: node.label }),
     });
 
     const circle = createSvgElement('circle', {
@@ -289,7 +289,7 @@ function addNode(x, y) {
   const id = state.nextId++;
   const label = nodeName(id);
   state.nodes.push({ id, label, x, y });
-  statusText.textContent = `Vértice ${label} criado.`;
+  statusText.textContent = t('Vértice {label} criado.', { label });
   resetExecutionAfterEdit();
   render();
 }
@@ -310,7 +310,7 @@ function connectSelected() {
   const [from, to] = state.selected;
 
   if (from === to || getEdge(from, to)) {
-    statusText.textContent = 'Esses vértices já estão conectados.';
+    statusText.textContent = t('Esses vértices já estão conectados.');
     return;
   }
 
@@ -321,7 +321,7 @@ function connectSelected() {
     to,
     weight,
   });
-  statusText.textContent = `Aresta ${labels([from, to]).join('–')} criada com peso ${weight}.`;
+  statusText.textContent = t('Aresta {names} criada com peso {weight}.', { names: labels([from, to]).join('–'), weight });
   state.selected = [];
   resetExecutionAfterEdit();
   render();
@@ -331,12 +331,12 @@ function updateSelectedEdgeWeight() {
   if (state.selected.length !== 2 || state.running) return;
   const edge = getEdge(state.selected[0], state.selected[1]);
   if (!edge) {
-    statusText.textContent = 'Não existe uma aresta entre os vértices selecionados.';
+    statusText.textContent = t('Não existe uma aresta entre os vértices selecionados.');
     return;
   }
 
   edge.weight = readWeight();
-  statusText.textContent = `Peso da aresta ${selectedLabels().join('–')} atualizado para ${edge.weight}.`;
+  statusText.textContent = t('Peso da aresta {names} atualizado para {weight}.', { names: selectedLabels().join('–'), weight: edge.weight });
   resetExecutionAfterEdit();
   render();
 }
@@ -345,14 +345,14 @@ function removeSelectedEdge() {
   if (state.selected.length !== 2 || state.running) return;
   const edge = getEdge(state.selected[0], state.selected[1]);
   if (!edge) {
-    statusText.textContent = 'Não existe uma aresta entre os vértices selecionados.';
+    statusText.textContent = t('Não existe uma aresta entre os vértices selecionados.');
     return;
   }
 
   const name = selectedLabels().join('–');
   state.edges = state.edges.filter((candidate) => candidate.id !== edge.id);
   state.selected = [];
-  statusText.textContent = `Aresta ${name} removida.`;
+  statusText.textContent = t('Aresta {names} removida.', { names: name });
   resetExecutionAfterEdit();
   render();
 }
@@ -366,8 +366,8 @@ function removeSelectedNodes() {
   state.edges = state.edges.filter((edge) => !ids.has(edge.from) && !ids.has(edge.to));
   state.selected = [];
   statusText.textContent = isSingleNode
-    ? `Vértice ${names} removido, incluindo suas arestas.`
-    : `Vértices ${names} removidos, incluindo suas arestas.`;
+    ? t('Vértice {names} removido, incluindo suas arestas.', { names })
+    : t('Vértices {names} removidos, incluindo suas arestas.', { names });
   resetExecutionAfterEdit();
   render();
 }
@@ -427,7 +427,7 @@ function finishNodeDrag(event) {
 
   if (drag.moved) {
     state.suppressClickNode = drag.nodeId;
-    statusText.textContent = `Vértice ${getNode(drag.nodeId)?.label || ''} reposicionado.`;
+    statusText.textContent = t('Vértice {label} reposicionado.', { label: getNode(drag.nodeId)?.label || '' });
     resetExecutionAfterEdit();
     render();
     window.setTimeout(() => {
@@ -515,7 +515,7 @@ function bfs(start, target) {
       current,
       visited: [...order],
       frontier: [...queue],
-      structureLabel: 'Fila',
+      structureLabel: t('Fila'),
     });
 
     if (current === target) break;
@@ -551,7 +551,7 @@ function dfs(start, target) {
       current,
       visited: [...order],
       frontier: [...stack].reverse(),
-      structureLabel: 'Pilha (topo primeiro)',
+      structureLabel: t('Pilha (topo primeiro)'),
     });
 
     if (current === target) break;
@@ -630,7 +630,7 @@ function astar(start, target) {
       current,
       visited: [...order],
       frontier: orderedOpen,
-      structureLabel: 'Lista aberta (ordenada por f(n))',
+      structureLabel: t('Lista aberta (ordenada por f(n))'),
       scores: orderedOpen.map((id) => ({
         id,
         g: gScore.get(id),
@@ -651,7 +651,7 @@ function astar(start, target) {
 }
 
 function formatFrontier(step, algorithmName) {
-  if (!step.frontier.length) return `${step.structureLabel}: vazia`;
+  if (!step.frontier.length) return t('{structure}: vazia', { structure: step.structureLabel });
 
   if (algorithmName === 'A*' && step.scores?.length) {
     const scoreText = step.scores
@@ -671,7 +671,7 @@ function applyExecutionStep(step, algorithmName) {
 
   visitOrder.textContent = labels(step.visited).join(' → ') || '—';
   frontierResult.textContent = formatFrontier(step, algorithmName);
-  statusText.textContent = `${algorithmName}: visitando ${getNode(step.current)?.label || step.current}.`;
+  statusText.textContent = t('{algorithm}: visitando {label}.', { algorithm: algorithmName, label: getNode(step.current)?.label || step.current });
 }
 
 function finishExecution() {
@@ -687,13 +687,13 @@ function finishExecution() {
   if (result.path.length) {
     const edgeCount = Math.max(0, result.path.length - 1);
     const costSuffix = algorithmName === 'A*' && result.cost != null
-      ? ` • custo total: ${result.cost}`
-      : ` • ${edgeCount} ${edgeCount === 1 ? 'aresta' : 'arestas'}`;
+      ? t(' • custo total: {cost}', { cost: result.cost })
+      : ` • ${edgeCount} ${t(edgeCount === 1 ? 'aresta' : 'arestas')}`;
     pathResult.textContent = `${labels(result.path).join(' → ')}${costSuffix}`;
-    statusText.textContent = `${algorithmName} concluído: caminho encontrado.`;
+    statusText.textContent = t('{algorithm} concluído: caminho encontrado.', { algorithm: algorithmName });
   } else {
-    pathResult.textContent = 'Nenhum caminho encontrado';
-    statusText.textContent = `${algorithmName} concluído: o destino não é alcançável a partir da origem.`;
+    pathResult.textContent = t('Nenhum caminho encontrado');
+    statusText.textContent = t('{algorithm} concluído: o destino não é alcançável a partir da origem.', { algorithm: algorithmName });
   }
 
   state.running = false;
@@ -713,7 +713,7 @@ async function runAlgorithm(name) {
   const start = Number(startSelect.value);
   const target = Number(targetSelect.value);
   if (!start || !target) {
-    statusText.textContent = 'Escolha uma origem e um destino válidos.';
+    statusText.textContent = t('Escolha uma origem e um destino válidos.');
     return;
   }
 
@@ -730,7 +730,7 @@ async function runAlgorithm(name) {
   const token = state.playbackToken;
 
   resetVisualState();
-  statusText.textContent = `Executando ${label}...`;
+  statusText.textContent = t('Executando {algorithm}...', { algorithm: label });
   updatePlaybackControls();
 
   while (state.running && state.execution && state.execution.index < result.steps.length && token === state.playbackToken) {
@@ -776,8 +776,8 @@ function togglePause() {
   if (!state.running || !state.execution) return;
   state.paused = !state.paused;
   statusText.textContent = state.paused
-    ? `${state.execution.algorithmName} pausado. Utilize “Avançar passo” ou “Continuar”.`
-    : `${state.execution.algorithmName} retomado.`;
+    ? t('{algorithm} pausado. Utilize “Avançar passo” ou “Continuar”.', { algorithm: state.execution.algorithmName })
+    : t('{algorithm} retomado.', { algorithm: state.execution.algorithmName });
   updatePlaybackControls();
 }
 
@@ -794,7 +794,7 @@ function resetVisualization() {
   state.paused = false;
   state.execution = null;
   resetVisualState();
-  statusText.textContent = 'Visualização reiniciada. O grafo foi mantido.';
+  statusText.textContent = t('Visualização reiniciada. O grafo foi mantido.');
   updatePlaybackControls();
 }
 
@@ -805,7 +805,7 @@ function clearGraph() {
   state.selected = [];
   state.nextId = 1;
   resetExecutionAfterEdit();
-  statusText.textContent = 'Todos os vértices e arestas foram removidos. Clique na área de visualização para criar um vértice.';
+  statusText.textContent = t('Todos os vértices e arestas foram removidos. Clique na área de visualização para criar um vértice.');
   render();
 }
 
@@ -835,7 +835,7 @@ function loadExample() {
   state.selected = [];
   state.nextId = 8;
   resetExecutionAfterEdit();
-  statusText.textContent = 'Exemplo carregado. Escolha origem, destino e um algoritmo.';
+  statusText.textContent = t('Exemplo carregado. Escolha origem, destino e um algoritmo.');
   render();
   startSelect.value = '1';
   targetSelect.value = '7';
