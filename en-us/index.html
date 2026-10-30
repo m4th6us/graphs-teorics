@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="../" />
+  <meta name="description" content="GraphLab: introdução à Teoria dos Grafos com conceitos fundamentais, exemplos visuais, demonstrações de algoritmos e laboratório interativo." />
+  <title>GraphLab — Teoria dos Grafos</title>
+  <link rel="alternate" hreflang="pt-BR" href="pt-br/" />
+  <link rel="alternate" hreflang="en-US" href="en-us/" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="vocabulary.css" />
+  <link rel="stylesheet" href="algorithm-basics.css" />
+  <link rel="stylesheet" href="sorting.css" />
+  <link rel="stylesheet" href="sorting-visuals.css" />
+  <link rel="stylesheet" href="algorithm-demos.css" />
+  <link rel="stylesheet" href="visual-fixes.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar" aria-label="Navegação principal">
+      <a class="brand" href="#inicio">GraphLab</a>
+      <div class="nav-links">
+        <a href="#vocabulario">Vocabulário</a>
+        <a href="#conceitos">Grafos</a>
+        <a href="#tipos">Tipos</a>
+        <a href="#algoritmos">Algoritmos</a>
+        <a href="#laboratorio">Laboratório</a>
+        <a href="#avaliacao">Avaliação</a>
+      </div>
+      <div class="language-switch" role="group" aria-label="Idioma do site">
+        <a href="pt-br/" lang="pt-BR" hreflang="pt-BR">PT-BR</a>
+        <a href="en-us/" lang="en-US" hreflang="en-US" aria-current="page">EN-US</a>
+      </div>
+    </nav>
+
+    <div id="inicio" class="hero-content">
+      <span class="eyebrow">Teoria dos Grafos • introdução aos fundamentos</span>
+      <h1>Teoria dos Grafos: conceitos e aplicações</h1>
+      <p>
+        Conheça os conceitos fundamentais de vértices, arestas e algoritmos de busca em grafos.
+        O conteúdo apresenta definições, exemplos visuais e aplicações práticas de forma progressiva.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary link-button" href="#vocabulario">Estudar os conceitos</a>
+        <a class="button ghost link-button" href="#laboratorio">Acessar o laboratório</a>
+      </div>
+      <div class="hero-stats" aria-label="Resumo do projeto">
+        <div><strong>Introdutório</strong><span>conteúdo acessível a quem está começando</span></div>
+        <div><strong>Visual</strong><span>representações gráficas e animações explicativas</span></div>
+        <div><strong>Interativo</strong><span>construa grafos e execute algoritmos</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="vocabulario" class="content-section vocabulary-section">
+      <div class="section-heading vocabulary-lead">
+        <span class="eyebrow">Conceitos fundamentais</span>
+        <h2>Vocabulário essencial de Teoria dos Grafos</h2>
+        <p>Conheça os principais termos utilizados para representar grafos e compreender suas propriedades.</p>
+      </div>
+
+      <div class="vocabulary-grid">
+        <article class="vocabulary-card"><span class="vocabulary-number">1</span><h3>Vértice ou nó</h3><p>É um elemento do grafo que pode representar entidades como pessoas, cidades, páginas ou tarefas.</p><span class="vocabulary-example">Em uma rede de transporte, cada cidade pode ser representada por um vértice.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">2</span><h3>Aresta</h3><p>É a conexão ou relação estabelecida entre dois vértices de um grafo.</p><span class="vocabulary-example">Uma estrada entre duas cidades pode ser representada por uma aresta.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">3</span><h3>Vizinho</h3><p>Em um grafo não direcionado, dois vértices são vizinhos quando existe uma aresta entre eles.</p><span class="vocabulary-example">Se existe uma aresta entre A e B, esses vértices são adjacentes.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">4</span><h3>Caminho</h3><p>É uma sequência de vértices em que cada par consecutivo está conectado por uma aresta, sem repetição de vértices.</p><span class="vocabulary-example">A → B → C → D é um caminho de A até D.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">5</span><h3>Peso</h3><p>É um valor numérico associado a uma aresta, utilizado para representar grandezas como distância, tempo ou custo.</p><span class="vocabulary-example">Uma estrada de 120 km pode ter peso 120.</span></article>
+        <article class="vocabulary-card"><span class="vocabulary-number">6</span><h3>Ciclo</h3><p>É um percurso fechado que retorna ao vértice inicial sem repetir outros vértices.</p><span class="vocabulary-example">A → B → C → A fecha um ciclo.</span></article>
+      </div>
+
+      <div class="vocabulary-tip"><strong>Em resumo:</strong> vértice = elemento representado; aresta = conexão; caminho = sequência de vértices conectados; peso = valor associado à aresta.</div>
+    </section>
+
+    <section id="conceitos" class="content-section">
+      <div class="section-heading">
+        <span class="eyebrow">Representação de relações</span>
+        <h2>O que é um grafo?</h2>
+        <p>
+          Um grafo é uma estrutura matemática composta por vértices e arestas que representam elementos e suas relações.
+          Esse modelo permite estudar conexões, identificar caminhos e analisar custos em redes de transporte, comunicação e outros sistemas.
+        </p>
+      </div>
+
+      <div class="beginner-intro">
+        <article class="beginner-copy">
+          <span class="card-kicker">Exemplo introdutório</span>
+          <h3>Representação de uma rede de amizades</h3>
+          <p>Cada pessoa é representada por um vértice. Uma aresta indica a existência de uma amizade entre duas pessoas.</p>
+          <div class="simple-rule">
+            <span><strong>Círculo:</strong> representação visual de um vértice.</span>
+            <span><strong>Linha:</strong> representação visual de uma aresta.</span>
+            <span><strong>Valor na aresta:</strong> representa o peso, quando o grafo é ponderado.</span>
+          </div>
+        </article>
+
+        <article class="visual-example">
+          <div class="visual-title"><strong>Rede de amizades entre quatro pessoas</strong><span>observe as conexões entre os vértices</span></div>
+          <div class="mini-graph" aria-label="Exemplo visual de um grafo de amizades">
+            <span class="mini-edge edge-ab"></span><span class="mini-edge edge-ad"></span><span class="mini-edge edge-bd"></span><span class="mini-edge edge-cd"></span>
+            <span class="mini-node friend-a">Ana</span><span class="mini-node friend-b">Bia</span><span class="mini-node friend-c">Caio</span><span class="mini-node friend-d">Davi</span>
+          </div>
+          <p>As arestas indicam amizades entre Ana e Bia, Ana e Davi, Bia e Davi, além de Caio e Davi. A representação permite identificar diretamente essas relações.</p>
+        </article>
+      </div>
+
+      <div class="analogy-strip">
+        <article class="analogy-item"><strong>🗺️ Mapa</strong><span>Cidades podem ser vértices; estradas, arestas; e distâncias, pesos.</span></article>
+        <article class="analogy-item"><strong>🌐 Internet</strong><span>Computadores e roteadores são representados por vértices, enquanto as conexões de rede são representadas por arestas.</span></article>
+        <article class="analogy-item"><strong>📦 Entregas</strong><span>Locais de entrega são vértices, rotas são arestas e tempos de deslocamento podem ser utilizados como pesos.</span></article>
+      </div>
+
+      <div class="section-divider-title"><span class="eyebrow">Onde isso aparece?</span><h3>Aplicações da Teoria dos Grafos</h3></div>
+      <div class="real-examples-grid">
+        <article class="real-example-card"><span class="example-icon">👥</span><h3>Redes sociais</h3><p>Perfis podem ser modelados como vértices e relações de amizade ou acompanhamento como arestas.</p></article>
+        <article class="real-example-card"><span class="example-icon">🚗</span><h3>GPS e rotas</h3><p>Cruzamentos podem ser representados por vértices e vias por arestas, com pesos associados à distância ou ao tempo de viagem.</p></article>
+        <article class="real-example-card"><span class="example-icon">🔗</span><h3>Sites e links</h3><p>Páginas são vértices e links entre páginas podem ser representados por arestas direcionadas.</p></article>
+        <article class="real-example-card"><span class="example-icon">💻</span><h3>Redes de computadores</h3><p>Dispositivos e roteadores representam vértices; enlaces de comunicação representam arestas.</p></article>
+        <article class="real-example-card"><span class="example-icon">🧩</span><h3>Dependências</h3><p>Grafos direcionados permitem representar dependências entre tarefas, disciplinas ou componentes de software.</p></article>
+        <article class="real-example-card"><span class="example-icon">📦</span><h3>Logística</h3><p>Centros de distribuição, destinos e rotas formam redes que podem ser analisadas para otimizar deslocamentos.</p></article>
+      </div>
+    </section>
+
+    <section id="tipos" class="content-section">
+      <div class="section-heading">
+        <span class="eyebrow">Propriedades dos grafos</span>
+        <h2>Direção e pesos das arestas</h2>
+        <p>Os grafos podem ser classificados conforme a orientação de suas arestas e a presença de pesos. Essas características são independentes: um grafo direcionado também pode ser ponderado.</p>
+      </div>
+
+      <div class="graph-types-grid">
+        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one"></span><span class="type-line two"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Não direcionado</span><h3>Arestas sem orientação</h3><p>A aresta entre A e B representa uma conexão nos dois sentidos. Redes de amizade são um exemplo comum.</p></article>
+        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one type-arrow"></span><span class="type-line two type-arrow"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Direcionado</span><h3>Arestas orientadas</h3><p>A aresta A → B indica uma relação de A para B e não implica a existência da aresta B → A.</p></article>
+        <article class="graph-type-card"><div class="type-visual" aria-hidden="true"><span class="type-line one weighted"></span><span class="type-line two weighted"></span><span class="type-dot one"></span><span class="type-dot two"></span><span class="type-dot three"></span></div><span class="card-kicker">Ponderado</span><h3>Arestas com pesos</h3><p>Cada aresta possui um valor que pode representar distância, tempo, custo ou outra grandeza do problema.</p></article>
+      </div>
+
+      <div class="beginner-tip"><strong>No laboratório interativo:</strong> o grafo é <strong>não direcionado e ponderado</strong>. Cada aresta conecta dois vértices nos dois sentidos e possui um peso numérico.</div>
+    </section>
+
+    <section id="algoritmos" class="content-section algorithms-section">
+      <div class="section-heading">
+        <span class="eyebrow">Fundamentos de algoritmos</span>
+        <h2>O que é um algoritmo?</h2>
+        <p>Um algoritmo é uma sequência finita de instruções bem definidas para resolver um problema ou executar uma tarefa. Assim como uma receita, ele estabelece etapas organizadas para alcançar um resultado.</p>
+      </div>
+
+      <div class="algorithm-foundation-grid">
+        <article class="algorithm-foundation-card">
+          <span class="card-kicker">Exemplo cotidiano</span><h3>Preparação de café</h3><p>Uma receita estabelece etapas que devem ser executadas para obter um resultado, ilustrando a lógica sequencial de um algoritmo.</p>
+          <div class="recipe-steps"><div class="recipe-step"><b>1</b><span>Colocar água.</span></div><div class="recipe-step"><b>2</b><span>Aquecer.</span></div><div class="recipe-step"><b>3</b><span>Passar pelo café.</span></div><div class="recipe-step"><b>4</b><span>Servir.</span></div></div>
+        </article>
+        <article class="algorithm-foundation-card">
+          <span class="card-kicker">Na computação</span><h3>Algoritmos aplicados a grafos</h3><p>Um algoritmo processa os vértices e as arestas de um grafo de acordo com regras específicas, como visitar vértices ou encontrar caminhos.</p>
+          <div class="algorithm-definition"><strong>Entrada:</strong> o grafo e, conforme o problema, os vértices de origem e destino.<br /><strong>Processamento:</strong> execução das instruções definidas pelo algoritmo.<br /><strong>Saída:</strong> ordem de visita, caminho encontrado ou custo calculado.</div>
+        </article>
+      </div>
+
+      <div class="sorting-explainer">
+        <span class="eyebrow">Introdução à ordenação</span>
+        <h3>Algoritmos de ordenação de listas</h3>
+        <p>Considere a lista <strong>8, 2, 5, 1</strong>. Diferentes algoritmos podem organizá-la como <strong>1, 2, 5, 8</strong>, utilizando estratégias distintas de comparação e movimentação dos elementos.</p>
+        <div class="sorting-grid">
+          <article class="sorting-card"><strong>Bubble Sort</strong><span>Compara elementos adjacentes e troca suas posições quando necessário.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Selection Sort</strong><span>Seleciona o menor elemento da parte não ordenada e o posiciona corretamente.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Insertion Sort</strong><span>Insere cada elemento na posição adequada da parte já ordenada.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Merge Sort</strong><span>Divide a lista em partes menores e combina as partes ordenadas.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="sorting-card"><strong>Quick Sort</strong><span>Seleciona um pivô e particiona os elementos para ordenar a lista.</span><div class="sort-bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+        </div>
+        <div class="sorting-note"><strong>Distinção importante:</strong> Bubble Sort e os demais algoritmos desta seção ordenam listas. BFS, DFS e A* realizam buscas em grafos. Já a <strong>ordenação topológica</strong> organiza os vértices de um grafo direcionado acíclico conforme suas dependências.</div>
+      </div>
+
+      <div class="section-divider-title"><span class="eyebrow">Busca e organização de dependências</span><h3>BFS, DFS, A* e ordenação topológica</h3><p>As demonstrações compartilham uma disposição visual semelhante dos vértices. BFS, DFS e A* ilustram estratégias de busca; a ordenação topológica considera relações direcionadas de dependência.</p></div>
+
+      <div class="algorithm-visual-grid">
+        <article class="algorithm-visual-card">
+          <span class="algorithm-badge">BFS</span><h3>Busca em Largura</h3><p>Visita os vértices por níveis, explorando primeiro aqueles alcançados por um menor número de arestas a partir da origem.</p>
+          <div class="algorithm-demo demo-bfs" aria-label="Animação da busca em largura"><div class="demo-stage"><span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span><span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span></div></div>
+          <div class="demo-caption"><strong>Uma ordem possível</strong><div class="demo-order"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span></div></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Inicia a busca no vértice A.</span></li><li><strong>2</strong><span>Adiciona os vizinhos à fila.</span></li><li><strong>3</strong><span>Explora os próximos níveis na ordem da fila.</span></li></ul>
+        </article>
+
+        <article class="algorithm-visual-card">
+          <span class="algorithm-badge">DFS</span><h3>Busca em Profundidade</h3><p>Explora um ramo do grafo em profundidade. Ao esgotar as possibilidades, retorna para investigar outros ramos.</p>
+          <div class="algorithm-demo demo-dfs" aria-label="Animação da busca em profundidade"><div class="demo-stage"><span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span><span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span></div></div>
+          <div class="demo-caption"><strong>Uma ordem possível</strong><div class="demo-order"><span>A</span><span>B</span><span>D</span><span>F</span><span>E</span><span>C</span></div></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Seleciona um vértice inicial.</span></li><li><strong>2</strong><span>Explora um ramo em profundidade.</span></li><li><strong>3</strong><span>Retrocede para explorar alternativas.</span></li></ul>
+        </article>
+
+        <article class="algorithm-visual-card">
+          <span class="algorithm-badge">A*</span><h3>Busca orientada por heurística</h3><p>Combina o custo acumulado desde a origem com uma estimativa do custo restante até o destino para orientar a exploração.</p>
+          <div class="algorithm-demo demo-astar" aria-label="Animação simplificada do A estrela"><div class="demo-stage"><span class="demo-line l1"></span><span class="demo-line l2"></span><span class="demo-line l3"></span><span class="demo-line l4"></span><span class="demo-line l5"></span><span class="demo-line l6"></span><span class="demo-node n1">A</span><span class="demo-node n2">B</span><span class="demo-node n3">C</span><span class="demo-node n4">D</span><span class="demo-node n5">E</span><span class="demo-node n6">F</span></div></div>
+          <div class="demo-caption"><strong>Função de avaliação</strong><span>custo acumulado + estimativa de custo restante</span></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>g(n): custo acumulado desde a origem.</span></li><li><strong>2</strong><span>h(n): estimativa do custo até o destino.</span></li><li><strong>3</strong><span>f(n) = g(n) + h(n).</span></li></ul>
+        </article>
+
+        <article class="algorithm-visual-card">
+          <span class="algorithm-badge">Ordem</span><h3>Ordenação topológica</h3><p>Organiza os vértices de um grafo direcionado acíclico (DAG) em uma sequência que respeita as dependências. Neste exemplo linear, cada vértice de 2 a 6 depende do anterior.</p>
+          <div class="algorithm-demo demo-topological" aria-label="Animação de uma ordenação topológica linear: 1, 2, 3, 4, 5 e 6"><div class="demo-stage"><span class="demo-node n1">1</span><span class="demo-node n2">2</span><span class="demo-node n3">3</span><span class="demo-node n4">4</span><span class="demo-node n5">5</span><span class="demo-node n6">6</span></div></div>
+          <div class="demo-caption"><strong>Ordem válida: 1 → 2 → 3 → 4 → 5 → 6</strong><span>as setas indicam as dependências entre as etapas</span></div>
+          <ul class="algorithm-steps"><li><strong>1</strong><span>Identifica vértices sem dependências pendentes.</span></li><li><strong>2</strong><span>Adiciona um desses vértices à sequência.</span></li><li><strong>3</strong><span>Repete até ordenar todos os vértices.</span></li></ul>
+        </article>
+      </div>
+
+      <div class="section-divider-title"><span class="eyebrow">Comparação de algoritmos</span><h3>Principais aplicações e características</h3></div>
+      <div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Algoritmo</th><th>Estratégia</th><th>Estrutura de dados</th><th>Aplicação</th></tr></thead><tbody><tr><td><strong>BFS</strong></td><td>Exploração por níveis</td><td>Fila</td><td>Encontrar caminhos com menos arestas, sem considerar pesos</td></tr><tr><td><strong>DFS</strong></td><td>Exploração em profundidade</td><td>Pilha ou recursão</td><td>Investigar conectividade e caminhos, sem garantir o menor trajeto</td></tr><tr><td><strong>A*</strong></td><td>Custo acumulado e heurística</td><td>Conjunto aberto por prioridade</td><td>Buscar caminhos de menor custo até um destino</td></tr><tr><td><strong>Topológica</strong></td><td>Respeito às dependências</td><td>Fila ou pilha</td><td>Ordenar atividades em um grafo direcionado acíclico (DAG)</td></tr></tbody></table></div>
+    </section>
+
+    <section id="laboratorio" class="lab-section">
+      <div class="lab-heading"><div><span class="eyebrow">Aplicação prática</span><h2>Construa e explore seu próprio grafo</h2></div><p>Clique em uma área vazia para criar um vértice, arraste-o para reposicioná-lo e selecione dois vértices para adicionar uma aresta.</p></div>
+      <div class="layout">
+        <aside class="panel controls-panel">
+          <section><div class="section-title-row"><h2>1. Monte o grafo</h2><span class="step-chip">Editor</span></div><p class="hint">Selecione dois vértices para criar, editar ou remover a aresta entre eles.</p><div class="control-grid"><label>Peso da aresta<input id="edgeWeight" type="number" min="1" step="1" value="1" /></label><button id="connectBtn" class="button secondary">Conectar</button></div><div class="button-row compact-actions"><button id="updateWeightBtn" class="button ghost">Atualizar peso</button><button id="removeEdgeBtn" class="button ghost danger">Remover aresta</button><button id="removeNodesBtn" class="button ghost danger">Remover vértices</button></div><div class="button-row"><button id="exampleBtn" class="button ghost">Carregar exemplo</button><button id="clearBtn" class="button danger ghost">Limpar grafo</button></div></section>
+          <section><div class="section-title-row"><h2>2. Escolha o algoritmo</h2><span class="step-chip">Busca</span></div><div class="select-grid"><label>Origem<select id="startNode"></select></label><label>Destino<select id="targetNode"></select></label></div><p class="hint">BFS e DFS percorrem as conexões sem considerar os pesos das arestas. A* utiliza esses pesos e uma estimativa do custo restante para buscar uma rota de menor custo.</p><div class="algorithm-buttons"><button class="button primary" data-algorithm="bfs">Executar BFS</button><button class="button primary" data-algorithm="dfs">Executar DFS</button><button class="button primary" data-algorithm="astar">Executar A*</button></div></section>
+          <section><div class="section-title-row"><h2>3. Acompanhe</h2><span class="step-chip">Passo a passo</span></div><div class="playback-grid"><button id="pauseBtn" class="button secondary" disabled>Pausar</button><button id="stepBtn" class="button secondary" disabled>Avançar passo</button><button id="resetVisualizationBtn" class="button ghost" disabled>Reiniciar visualização</button></div><label class="speed-control">Velocidade<select id="speedSelect"><option value="900">Lenta</option><option value="520" selected>Normal</option><option value="260">Rápida</option></select></label></section>
+          <section class="interaction-help"><h2>Como utilizar o laboratório</h2><p><strong>Clique em uma área vazia:</strong> cria um vértice.</p><p><strong>Clique em um vértice:</strong> seleciona o elemento.</p><p><strong>Arraste um vértice:</strong> altera sua posição.</p><p><strong>Selecione dois vértices:</strong> permite criar, editar ou remover uma aresta entre eles.</p></section>
+        </aside>
+
+        <section class="workspace" aria-label="Laboratório de grafos">
+          <div class="workspace-toolbar"><div><strong>Área do grafo</strong><span id="selectionText">Nenhum vértice selecionado</span></div><div class="legend" aria-label="Legenda"><span><i class="dot default"></i>Normal</span><span><i class="dot frontier"></i>Fronteira</span><span><i class="dot current"></i>Atual</span><span><i class="dot visited"></i>Visitado</span><span><i class="dot path"></i>Caminho</span></div></div>
+          <svg id="graphCanvas" viewBox="0 0 1000 650" role="img" aria-label="Editor visual de grafos"></svg>
+          <div class="result-panel"><div><span class="result-label">Status</span><strong id="statusText" aria-live="polite">Exemplo carregado. Escolha origem, destino e um algoritmo.</strong></div><div><span class="result-label">Ordem de visita</span><code id="visitOrder">—</code></div><div><span class="result-label">Fronteira / estrutura</span><code id="frontierResult">—</code></div><div><span class="result-label">Caminho encontrado</span><code id="pathResult">—</code></div></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="avaliacao" class="content-section assessment-section" aria-labelledby="assessment-title">
+      <div class="section-heading">
+        <span class="eyebrow">Verificação da aprendizagem</span>
+        <h2 id="assessment-title">Avalie seus conhecimentos</h2>
+        <p>Responda a cinco questões objetivas sobre os conceitos apresentados. Ao concluir, consulte a correção automática para identificar os conteúdos que precisam ser revisados.</p>
+      </div>
+
+      <article class="assessment-card">
+        <div class="assessment-copy">
+          <span class="card-kicker">Questionário de revisão</span>
+          <h3>Revisão dos fundamentos de Teoria dos Grafos</h3>
+          <p>O questionário aborda grafos, vértices, arestas, relações de amizade e busca em largura.</p>
+          <p class="assessment-language-note">O formulário externo está disponível apenas em português (Brasil).</p>
+          <ul class="assessment-details" aria-label="Detalhes da avaliação">
+            <li><strong>5 perguntas</strong><span>múltipla escolha</span></li>
+            <li><strong>Correção automática</strong><span>resultado ao enviar</span></li>
+            <li><strong>Nível introdutório</strong><span>conteúdo apresentado nesta página</span></li>
+          </ul>
+          <a class="button primary assessment-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdKzO21_4-qKIzz4f32jUMu-4fLdw8ZWQ9qbJLzUZgPyhsYmw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" hreflang="pt-BR">Abrir avaliação</a>
+        </div>
+        <a class="assessment-qr" href="https://docs.google.com/forms/d/e/1FAIpQLSdKzO21_4-qKIzz4f32jUMu-4fLdw8ZWQ9qbJLzUZgPyhsYmw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" hreflang="pt-BR" aria-label="Abrir avaliação do GraphLab pelo QR Code">
+          <img src="assets/graphlab-quiz-qr.svg" width="150" height="150" alt="QR Code para abrir a avaliação GraphLab" />
+          <small>Aponte a câmera<br />para responder</small>
+        </a>
+      </article>
+    </section>
+  </main>
+
+  <footer><p>GraphLab — um projeto acadêmico para visualizar Teoria dos Grafos.</p></footer>
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
