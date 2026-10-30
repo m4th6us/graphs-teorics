@@ -285,12 +285,12 @@ const EN_US = {
   "Todos os vértices e arestas foram removidos. Clique na área de visualização para criar um vértice.": "All vertices and edges were removed. Click the workspace to create a vertex."
 };
 
-const locale = /^\\/en-us(?:\\/|$)/i.test(window.location.pathname) ? 'en-US' : 'pt-BR';
+const locale = window.location.pathname.split('/').includes('en-us') ? 'en-US' : 'pt-BR';
 document.documentElement.lang = locale;
 
 function t(message, values = {}) {
   const localized = locale === 'en-US' ? (EN_US[message] ?? message) : message;
-  return localized.replace(/\\{(\\w+)\\}/g, (match, key) =>
+  return localized.replace(new RegExp('\\{(\\w+)\\}', 'g'), (match, key) =>
     Object.prototype.hasOwnProperty.call(values, key) ? String(values[key]) : match,
   );
 }
