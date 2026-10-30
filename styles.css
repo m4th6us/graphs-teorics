@@ -93,6 +93,40 @@ a {
   color: var(--text);
 }
 
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.language-switch a {
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.language-switch a:hover,
+.language-switch a:focus-visible {
+  color: var(--text);
+}
+
+.language-switch a[aria-current="page"] {
+  color: var(--text);
+  background: var(--primary);
+}
+
 .hero-content {
   max-width: 980px;
 }
