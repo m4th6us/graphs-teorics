@@ -76,6 +76,22 @@ A página disponibiliza uma seção de **Avaliação de conhecimentos**, com ace
 
 A heurística do A* utiliza a distância euclidiana entre os vértices, multiplicada pelo menor quociente `peso/distância` calculado entre as arestas existentes. Essa escolha produz uma estimativa que não excede o custo real mínimo do caminho no grafo com pesos positivos, auxiliando a busca por uma rota de menor custo.
 
+## Idiomas e rotas
+
+O GraphLab oferece tradução da interface para **português brasileiro** e **inglês dos Estados Unidos**, sem dependências externas:
+
+- `/pt-br/`: português brasileiro;
+- `/en-us/`: inglês dos Estados Unidos;
+- `/`: mantém o acesso legado em português brasileiro.
+
+O seletor de idioma no topo preserva a seção atual (fragmento `#...`) durante a navegação. A tradução cobre textos explicativos, rótulos de acessibilidade, controles e mensagens do laboratório. O formulário externo do Google Forms continua disponível apenas em português.
+
+### Manutenção da tradução
+
+O conteúdo original do HTML fica em português; `i18n.js` contém o catálogo `EN_US` e o helper `t(texto, variáveis)`. Para textos estáticos, adicione à tabela a chave em português e a respectiva tradução. Para mensagens geradas pelo JavaScript, utilize `t()` com placeholders como `{label}`, mantendo a chave no catálogo.
+
+As páginas `index.html`, `pt-br/index.html` e `en-us/index.html` compartilham a estrutura; ao editar o HTML, sincronize as três versões. As páginas de idioma usam `<base href="../">` para resolver os arquivos comuns na raiz. Para testar os links diretamente, sirva a pasta por HTTP, por exemplo com `python -m http.server 8000`.
+
 ## Como executar
 
 Não é necessário instalar dependências.
@@ -86,13 +102,16 @@ Abra `index.html` diretamente no navegador ou execute um servidor HTTP estático
 python -m http.server 8000
 ```
 
-Depois acesse `http://localhost:8000`.
+Depois acesse `http://localhost:8000`, `http://localhost:8000/pt-br/` ou `http://localhost:8000/en-us/`.
 
 ## Estrutura
 
 ```text
 .
 ├── index.html
+├── en-us/index.html
+├── pt-br/index.html
+├── i18n.js
 ├── styles.css
 ├── learning.css
 ├── vocabulary.css
@@ -116,7 +135,8 @@ Depois acesse `http://localhost:8000`.
 - `algorithm-demos.css`: animações dos algoritmos de grafos;
 - `visual-fixes.css`: geometria exata das linhas e nós dos exemplos;
 - `assets/graphlab-quiz-qr.svg`: QR Code da avaliação;
-- `script.js`: editor do grafo e execução dos algoritmos interativos.
+- `script.js`: editor do grafo e execução dos algoritmos interativos;
+- `i18n.js`: tradução da interface e mensagens do laboratório.
 
 ## Objetivo acadêmico
 
