@@ -282,7 +282,9 @@ const EN_US = {
   "{algorithm} pausado. Utilize “Avançar passo” ou “Continuar”.": "{algorithm} paused. Use “Next step” or “Resume”.",
   "{algorithm} retomado.": "{algorithm} resumed.",
   "Visualização reiniciada. O grafo foi mantido.": "Visualization reset. The graph was preserved.",
-  "Todos os vértices e arestas foram removidos. Clique na área de visualização para criar um vértice.": "All vertices and edges were removed. Click the workspace to create a vertex."
+  "Todos os vértices e arestas foram removidos. Clique na área de visualização para criar um vértice.": "All vertices and edges were removed. Click the workspace to create a vertex.",
+  "Idioma do site": "Site language",
+  "O formulário externo está disponível apenas em português (Brasil).": "The external assessment form is available in Brazilian Portuguese only."
 };
 
 const locale = window.location.pathname.split('/').includes('en-us') ? 'en-US' : 'pt-BR';
@@ -303,9 +305,11 @@ function translateStaticContent() {
   while ((node = walker.nextNode())) {
     if (node.parentElement?.closest('script, style')) continue;
     const value = node.nodeValue;
-    const trimmed = value.trim();
-    if (!trimmed || !Object.prototype.hasOwnProperty.call(EN_US, trimmed)) continue;
-    node.nodeValue = value.replace(trimmed, EN_US[trimmed]);
+    const normalized = value.replace(/\s+/g, ' ').trim();
+    if (!normalized || !Object.prototype.hasOwnProperty.call(EN_US, normalized)) continue;
+    const leading = value.match(/^\s*/)[0];
+    const trailing = value.match(/\s*$/)[0];
+    node.nodeValue = leading + EN_US[normalized] + trailing;
   }
 
   for (const element of document.querySelectorAll('[aria-label], [alt], [title]')) {
@@ -321,3 +325,8 @@ function translateStaticContent() {
 }
 
 translateStaticContent();
+
+// Keep visitors on the same section when changing languages.
+document.querySelectorAll('.language-switch a').forEach((link) => {
+  link.addEventListener('click', () => { link.hash = window.location.hash; });
+});
